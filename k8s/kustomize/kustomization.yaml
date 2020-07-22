@@ -1,0 +1,19 @@
+resources:
+- teastore-clusterip.yaml
+
+patches:
+- target:
+    kind: Deployment
+    name: teastore-auth|teastore-image|teastore-recommender|teastore-webui|teastore-persistence|teastore-registry
+  patch: |-
+            - op: add
+              path: "/metadata/labels"
+              value: { instrument: "appd-auto" , appdAppName: "TeaStore" }
+
+
+#name: teastore-registry
+#teastore-persistence
+#name: teastore-auth
+#name: teastore-image
+#name: teastore-recommender
+#name: teastore-webui
