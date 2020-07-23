@@ -1,0 +1,49 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: company
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: teastore
+  namespace: company
+spec:
+  type: ExternalName
+  externalName: teastore-webui.teastore.svc.cluster.local
+  ports:
+  - port: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: teastore-load
+  namespace: company
+spec:
+  selector:
+    matchLabels:
+      app: load
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: load
+    spec:
+      containers:
+      - name: jmeter
+        image: "justb4/jmeter:5.1.1"
+        args: [ "-n", "-t", "/load-script/teastore_browse_nogui.jmx", "-JrampUp=1", "-JnumUser=10", "-Jport=8080", "-Jhostname=teastore.company.svc"]
+        resources:
+          requests:
+            memory: "500Mi"
+            cpu: "100m"
+          limits:
+            memory: "1000Mi"
+            cpu: 2000m
+        volumeMounts:
+        - name: load-script-config
+          mountPath: /load-script
+      volumes:
+      - name: load-script-config
+        configMap:
+          name: load-script
