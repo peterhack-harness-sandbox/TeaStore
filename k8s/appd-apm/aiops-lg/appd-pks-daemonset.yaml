@@ -1,0 +1,115 @@
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: machine-agent-daemonset
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      name: appdynamics-machine-agent
+  template:
+    metadata:
+      labels:
+        name: appdynamics-machine-agent
+    spec:
+      containers:
+      - env:
+        - name: APPDYNAMICS_CONTROLLER_HOST_NAME
+          value: "<your-hostname>"
+        - name: APPDYNAMICS_CONTROLLER_PORT
+          value: "<your-port>"
+        - name: APPDYNAMICS_CONTROLLER_SSL_ENABLED
+          value: "yes"
+        - name: APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY
+          value: "<your-access-key>"
+        - name: APPDYNAMICS_AGENT_ACCOUNT_NAME
+          value: "<your-account>"
+        - name: APPDYNAMICS_SIM_ENABLED
+          value: "true"
+        - name: APPDYNAMICS_DOCKER_ENABLED
+          value: "true"
+        image: <your-image>
+        command: ["/bin/sh", "-c"]
+        args:
+        - echo starting;
+          mkdir -p /var/run/;
+          ln -s /mnt/run/docker/docker.sock /var/run/docker.sock;
+          /opt/appdynamics/machine-agent/start-appdynamics.sh
+        name: machine-agent
+        volumeMounts:
+        - mountPath: /mnt
+          name: docker-sock
+          readOnly: true
+        - mountPath: /hostroot
+          name: hostroot
+          readOnly: true
+      volumes:
+      - name: hostroot
+        hostPath:
+          path: /
+          type: Directory
+      - name: docker-sock
+        hostPath:
+          path: /var/vcap/data/sys
+          type: Directory
+      restartPolicy: Always
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: cluster-read-all
+rules:
+  -
+    apiGroups:
+      - ""
+      - apps
+      - autoscaling
+      - batch
+      - extensions
+      - policy
+      - rbac.authorization.k8s.io
+    resources:
+    # everything except secrets
+      - componentstatuses
+      - configmaps
+      - daemonsets
+      - deployments
+      - events
+      - endpoints
+      - horizontalpodautoscalers
+      - ingress
+      - jobs
+      - limitranges
+      - namespaces
+      - nodes
+      - pods
+      - persistentvolumes
+      - persistentvolumeclaims
+      - resourcequotas
+      - replicasets
+      - replicationcontrollers
+      - serviceaccounts
+      - services
+    verbs:
+      - get
+      - watch
+      - list
+  - nonResourceURLs: ["*"]
+    verbs:
+      - get
+      - watch
+      - list
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: k8s-agent-readall-role-binding
+subjects:
+  - kind: ServiceAccount
+    name: default
+    namespace: default
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-read-all
+---

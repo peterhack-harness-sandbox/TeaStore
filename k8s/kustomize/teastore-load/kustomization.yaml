@@ -1,0 +1,11 @@
+resources:
+- teastore-load.yaml
+
+configMapGenerator:
+- name: load-script
+  namespace: company
+  files:
+  - teastore_browse_nogui.jmx
+
+generatorOptions:
+  disableNameSuffixHash: true

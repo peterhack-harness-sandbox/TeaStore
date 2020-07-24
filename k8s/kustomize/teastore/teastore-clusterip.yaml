@@ -53,6 +53,9 @@ spec:
           image: descartesresearch/teastore-registry
           ports:
             - containerPort: 8080
+          env:
+            - name: HOST_NAME
+              value: "teastore-recommender"
 ---
 apiVersion: v1
 kind: Service

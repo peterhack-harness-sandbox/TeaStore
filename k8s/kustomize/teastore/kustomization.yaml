@@ -1,0 +1,26 @@
+resources:
+- teastore-clusterip.yaml
+- teastore-lb.yaml
+
+namespace: teastore
+
+patches:
+- target:
+    kind: Deployment
+    name: teastore-auth|teastore-image|teastore-recommender|teastore-webui|teastore-persistence|teastore-registry
+  patch: |-
+            - op: add
+              path: "/metadata/labels"
+              value: { instrument: "appd-auto" , appdAppName: "TeaStore" }
+            - op: add
+              path: /spec/template/metadata/labels/instrument
+              value: appd-auto
+            - op: add
+              path: /spec/template/metadata/labels/appdAppName
+              value: TeaStore        
+            - op: add
+              path: "/spec/template/spec/containers/0/env/0"
+              value: { name: APPDYNAMICS_NETVIZ_AGENT_HOST, valueFrom: { fieldRef: { fieldPath: status.hostIP } } }
+            - op: add
+              path: "/spec/template/spec/containers/0/env/0"
+              value: { name: APPDYNAMICS_NETVIZ_AGENT_PORT, value: "3892" }

@@ -1,0 +1,1 @@
+JVM_ARGS= -Xms768m -Xmx768m 

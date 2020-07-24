@@ -1,0 +1,44 @@
+apiVersion: appdynamics.com/v1alpha1
+kind: Clusteragent
+metadata:
+  name: k8s-cluster-agent
+  namespace: appdynamics
+spec:
+  account: wwt
+  appName: k8-fin-next
+  clusterMetricsSyncInterval: 60
+  containerBatchSize: 5
+  containerParallelRequestLimit: 1
+  containerRegistrationInterval: 120
+  controllerUrl: https://wwt.saas.appdynamics.com:443
+  eventUploadInterval: 10
+  httpClientTimeout: 30
+  image: aalari/cluster-agent:4.5.16
+  logFileBackups: 3
+  logFileSizeMb: 5
+  logLevel: INFO
+  maxPodsToRegisterCount: 750
+  metadataSyncInterval: 60
+  metricUploadRetryCount: 2
+  metricUploadRetryIntervalMilliSeconds: 5
+  metricsSyncInterval: 30
+  podBatchSize: 6
+  podFilter: {}
+  resources: {}
+  serviceAccountName: appdynamics-cluster-agent
+  stdoutLogging: "true"
+  instrumentationMethod: Env
+  nsToInstrumentRegex: teastore
+  appNameStrategy: label
+  appNameLabel: appdAppName
+  defaultAppName: "Noname-App"
+  instrumentationRules:
+  - namespaceRegex: teastore
+    labelMatch:
+    - instrument: appd-auto
+    appNameLabel: appdAppName
+    netvizInfo:
+      bciEnabled: true
+      port: 3892
+    #tierName: - use deployment name by default
+  nsToMonitor: [default,teastore]
