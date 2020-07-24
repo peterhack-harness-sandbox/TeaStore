@@ -425,16 +425,20 @@ spec:
         - -t
         - /load-script/teastore_browse_nogui.jmx
         - -JrampUp=1
-        - -JnumUser=5
+        - -JnumUser=10
         - -Jport=8080
         - -Jhostname=teastore.company.svc
-        image: justb4/jmeter:5.1.1
+        env:
+        - name: JVM_ARGS
+          value: -Xms768m -Xmx768m
+        image: ykpersonal/jmeter:5.1.1
         name: jmeter
         resources:
           limits:
             cpu: 2000m
           requests:
             cpu: 100m
+            memory: 1000Mi
         volumeMounts:
         - mountPath: /load-script
           name: load-script-config
