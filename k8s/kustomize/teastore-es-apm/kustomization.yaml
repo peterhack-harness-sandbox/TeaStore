@@ -1,0 +1,66 @@
+resources:
+- teastore-clusterip.yaml
+
+namespace: teastore
+
+patches:
+- target:
+    kind: Deployment
+    name: teastore-auth|teastore-image|teastore-recommender|teastore-webui|teastore-persistence|teastore-registry
+  patch: |-
+            - op: add
+              path: /spec/template/metadata/labels/instrument
+              value: appd-auto
+            - op: add
+              path: /spec/template/spec/initContainers
+              value:
+              - name: elastic-java-agent
+                image: docker.elastic.co/observability/apm-agent-java:1.17.0
+                volumeMounts:
+                - mountPath: /elastic/apm/agent
+                  name: elastic-apm-agent
+                command: ['cp', '-v', '/usr/agent/elastic-apm-agent.jar', '/elastic/apm/agent']
+            - op: add
+              path: "/spec/template/spec/volumes"
+              value:
+              - name: elastic-apm-agent
+                emptyDir: {}
+            - op: add
+              path: "/spec/template/spec/containers/0/volumeMounts"
+              value:
+              - mountPath: /elastic/apm/agent
+                name: elastic-apm-agent
+            - op: add
+              path: "/spec/template/spec/containers/0/env/-"
+              value: { name: ELASTIC_APM_SERVER_URL, value: "https://es02-apm-http.elk.svc.cluster.local:8200/" }
+            - op: add
+              path: "/spec/template/spec/containers/0/env/-"
+              value: { name: ELASTIC_APM_JS_SERVER_URL, value: "https://192.168.2.54:30201/" }
+            - op: add
+              path: "/spec/template/spec/containers/0/env/-"
+              value: { name: ELASTIC_APM_VERIFY_SERVER_CERT, value: "false" }
+            - op: add
+              path: "/spec/template/spec/containers/0/env/-"
+              value: { name: ELASTIC_APM_SECRET_TOKEN, value: "7g63b1HyDj3Z9n9I8to70POC" }
+            - op: add
+              path: "/spec/template/spec/containers/0/env/-"
+              value: { name: ELASTIC_APM_ENABLE_LOG_CORRELATION, value: "true" }
+            - op: add
+              path: "/spec/template/spec/containers/0/env/-"
+              value:
+                name: ELASTIC_APM_SERVICE_NAME
+                valueFrom:
+                  fieldRef:
+                    fieldPath: metadata.labels['run']
+            - op: add
+              path: "/spec/template/spec/containers/0/env/-"
+              value: { name: ELASTIC_APM_APPLICATION_PACKAGES, value: "tools.descartes.teastore" }
+            - op: add
+              path: "/spec/template/spec/containers/0/env/-"
+              value: { name: ELASTIC_APM_ENVIRONMENT, value: teastore-demo }
+            - op: add
+              path: "/spec/template/spec/containers/0/env/-"
+              value: { name: ELASTIC_APM_LOG_LEVEL, value: DEBUG }
+            - op: add
+              path: "/spec/template/spec/containers/0/env/-"
+              value: { name: JAVA_TOOL_OPTIONS, value: -javaagent:/elastic/apm/agent/elastic-apm-agent.jar }

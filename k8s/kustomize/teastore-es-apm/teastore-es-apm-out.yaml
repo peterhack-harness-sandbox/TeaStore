@@ -1,0 +1,532 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: teastore
+    run: teastore-auth
+  name: teastore-auth
+  namespace: teastore
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+  selector:
+    run: teastore-auth
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: teastore
+    run: teastore-db
+  name: teastore-db
+  namespace: teastore
+spec:
+  ports:
+  - port: 3306
+    protocol: TCP
+  selector:
+    run: teastore-db
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: teastore
+    run: teastore-image
+  name: teastore-image
+  namespace: teastore
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+  selector:
+    run: teastore-image
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: teastore
+    run: teastore-persistence
+  name: teastore-persistence
+  namespace: teastore
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+  selector:
+    run: teastore-persistence
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: teastore
+    run: teastore-recommender
+  name: teastore-recommender
+  namespace: teastore
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+  selector:
+    run: teastore-recommender
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: teastore
+    run: teastore-registry
+  name: teastore-registry
+  namespace: teastore
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+  selector:
+    run: teastore-registry
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: teastore
+    run: teastore-webui
+  name: teastore-webui
+  namespace: teastore
+spec:
+  ports:
+  - nodePort: 30080
+    port: 8080
+    protocol: TCP
+  selector:
+    run: teastore-webui
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: teastore-auth
+  namespace: teastore
+spec:
+  selector:
+    matchLabels:
+      app: teastore
+      run: teastore-auth
+  template:
+    metadata:
+      labels:
+        app: teastore
+        instrument: appd-auto
+        run: teastore-auth
+    spec:
+      containers:
+      - env:
+        - name: HOST_NAME
+          value: teastore-auth
+        - name: REGISTRY_HOST
+          value: teastore-registry
+        - name: ELASTIC_APM_SERVER_URL
+          value: https://es02-apm-http.elk.svc.cluster.local:8200/
+        - name: ELASTIC_APM_JS_SERVER_URL
+          value: https://192.168.2.54:30201/
+        - name: ELASTIC_APM_VERIFY_SERVER_CERT
+          value: "false"
+        - name: ELASTIC_APM_SECRET_TOKEN
+          value: 7g63b1HyDj3Z9n9I8to70POC
+        - name: ELASTIC_APM_ENABLE_LOG_CORRELATION
+          value: "true"
+        - name: ELASTIC_APM_SERVICE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.labels['run']
+        - name: ELASTIC_APM_APPLICATION_PACKAGES
+          value: tools.descartes.teastore
+        - name: ELASTIC_APM_ENVIRONMENT
+          value: teastore-demo
+        - name: ELASTIC_APM_LOG_LEVEL
+          value: DEBUG
+        - name: JAVA_TOOL_OPTIONS
+          value: -javaagent:/elastic/apm/agent/elastic-apm-agent.jar
+        image: descartesresearch/teastore-auth
+        name: teastore-auth
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - mountPath: /elastic/apm/agent
+          name: elastic-apm-agent
+      initContainers:
+      - command:
+        - cp
+        - -v
+        - /usr/agent/elastic-apm-agent.jar
+        - /elastic/apm/agent
+        image: docker.elastic.co/observability/apm-agent-java:1.17.0
+        name: elastic-java-agent
+        volumeMounts:
+        - mountPath: /elastic/apm/agent
+          name: elastic-apm-agent
+      volumes:
+      - emptyDir: {}
+        name: elastic-apm-agent
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: teastore-db
+  namespace: teastore
+spec:
+  selector:
+    matchLabels:
+      app: teastore
+      run: teastore-db
+  template:
+    metadata:
+      labels:
+        app: teastore
+        run: teastore-db
+    spec:
+      containers:
+      - image: descartesresearch/teastore-db
+        name: teastore-db
+        ports:
+        - containerPort: 3306
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: teastore-image
+  namespace: teastore
+spec:
+  selector:
+    matchLabels:
+      app: teastore
+      run: teastore-image
+  template:
+    metadata:
+      labels:
+        app: teastore
+        instrument: appd-auto
+        run: teastore-image
+    spec:
+      containers:
+      - env:
+        - name: HOST_NAME
+          value: teastore-image
+        - name: REGISTRY_HOST
+          value: teastore-registry
+        - name: ELASTIC_APM_SERVER_URL
+          value: https://es02-apm-http.elk.svc.cluster.local:8200/
+        - name: ELASTIC_APM_JS_SERVER_URL
+          value: https://192.168.2.54:30201/
+        - name: ELASTIC_APM_VERIFY_SERVER_CERT
+          value: "false"
+        - name: ELASTIC_APM_SECRET_TOKEN
+          value: 7g63b1HyDj3Z9n9I8to70POC
+        - name: ELASTIC_APM_ENABLE_LOG_CORRELATION
+          value: "true"
+        - name: ELASTIC_APM_SERVICE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.labels['run']
+        - name: ELASTIC_APM_APPLICATION_PACKAGES
+          value: tools.descartes.teastore
+        - name: ELASTIC_APM_ENVIRONMENT
+          value: teastore-demo
+        - name: ELASTIC_APM_LOG_LEVEL
+          value: DEBUG
+        - name: JAVA_TOOL_OPTIONS
+          value: -javaagent:/elastic/apm/agent/elastic-apm-agent.jar
+        image: descartesresearch/teastore-image
+        name: teastore-image
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - mountPath: /elastic/apm/agent
+          name: elastic-apm-agent
+      initContainers:
+      - command:
+        - cp
+        - -v
+        - /usr/agent/elastic-apm-agent.jar
+        - /elastic/apm/agent
+        image: docker.elastic.co/observability/apm-agent-java:1.17.0
+        name: elastic-java-agent
+        volumeMounts:
+        - mountPath: /elastic/apm/agent
+          name: elastic-apm-agent
+      volumes:
+      - emptyDir: {}
+        name: elastic-apm-agent
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: teastore-persistence
+  namespace: teastore
+spec:
+  selector:
+    matchLabels:
+      app: teastore
+      run: teastore-persistence
+  template:
+    metadata:
+      labels:
+        app: teastore
+        instrument: appd-auto
+        run: teastore-persistence
+    spec:
+      containers:
+      - env:
+        - name: HOST_NAME
+          value: teastore-persistence
+        - name: REGISTRY_HOST
+          value: teastore-registry
+        - name: DB_HOST
+          value: teastore-db
+        - name: DB_PORT
+          value: "3306"
+        - name: ELASTIC_APM_SERVER_URL
+          value: https://es02-apm-http.elk.svc.cluster.local:8200/
+        - name: ELASTIC_APM_JS_SERVER_URL
+          value: https://192.168.2.54:30201/
+        - name: ELASTIC_APM_VERIFY_SERVER_CERT
+          value: "false"
+        - name: ELASTIC_APM_SECRET_TOKEN
+          value: 7g63b1HyDj3Z9n9I8to70POC
+        - name: ELASTIC_APM_ENABLE_LOG_CORRELATION
+          value: "true"
+        - name: ELASTIC_APM_SERVICE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.labels['run']
+        - name: ELASTIC_APM_APPLICATION_PACKAGES
+          value: tools.descartes.teastore
+        - name: ELASTIC_APM_ENVIRONMENT
+          value: teastore-demo
+        - name: ELASTIC_APM_LOG_LEVEL
+          value: DEBUG
+        - name: JAVA_TOOL_OPTIONS
+          value: -javaagent:/elastic/apm/agent/elastic-apm-agent.jar
+        image: descartesresearch/teastore-persistence
+        name: teastore-persistence
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - mountPath: /elastic/apm/agent
+          name: elastic-apm-agent
+      initContainers:
+      - command:
+        - cp
+        - -v
+        - /usr/agent/elastic-apm-agent.jar
+        - /elastic/apm/agent
+        image: docker.elastic.co/observability/apm-agent-java:1.17.0
+        name: elastic-java-agent
+        volumeMounts:
+        - mountPath: /elastic/apm/agent
+          name: elastic-apm-agent
+      volumes:
+      - emptyDir: {}
+        name: elastic-apm-agent
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: teastore-recommender
+  namespace: teastore
+spec:
+  selector:
+    matchLabels:
+      app: teastore
+      run: teastore-recommender
+  template:
+    metadata:
+      labels:
+        app: teastore
+        instrument: appd-auto
+        run: teastore-recommender
+    spec:
+      containers:
+      - env:
+        - name: HOST_NAME
+          value: teastore-recommender
+        - name: REGISTRY_HOST
+          value: teastore-registry
+        - name: ELASTIC_APM_SERVER_URL
+          value: https://es02-apm-http.elk.svc.cluster.local:8200/
+        - name: ELASTIC_APM_JS_SERVER_URL
+          value: https://192.168.2.54:30201/
+        - name: ELASTIC_APM_VERIFY_SERVER_CERT
+          value: "false"
+        - name: ELASTIC_APM_SECRET_TOKEN
+          value: 7g63b1HyDj3Z9n9I8to70POC
+        - name: ELASTIC_APM_ENABLE_LOG_CORRELATION
+          value: "true"
+        - name: ELASTIC_APM_SERVICE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.labels['run']
+        - name: ELASTIC_APM_APPLICATION_PACKAGES
+          value: tools.descartes.teastore
+        - name: ELASTIC_APM_ENVIRONMENT
+          value: teastore-demo
+        - name: ELASTIC_APM_LOG_LEVEL
+          value: DEBUG
+        - name: JAVA_TOOL_OPTIONS
+          value: -javaagent:/elastic/apm/agent/elastic-apm-agent.jar
+        image: descartesresearch/teastore-recommender
+        name: teastore-recommender
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - mountPath: /elastic/apm/agent
+          name: elastic-apm-agent
+      initContainers:
+      - command:
+        - cp
+        - -v
+        - /usr/agent/elastic-apm-agent.jar
+        - /elastic/apm/agent
+        image: docker.elastic.co/observability/apm-agent-java:1.17.0
+        name: elastic-java-agent
+        volumeMounts:
+        - mountPath: /elastic/apm/agent
+          name: elastic-apm-agent
+      volumes:
+      - emptyDir: {}
+        name: elastic-apm-agent
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: teastore-registry
+  namespace: teastore
+spec:
+  selector:
+    matchLabels:
+      app: teastore
+      run: teastore-registry
+  template:
+    metadata:
+      labels:
+        app: teastore
+        instrument: appd-auto
+        run: teastore-registry
+    spec:
+      containers:
+      - env:
+        - name: HOST_NAME
+          value: teastore-recommender
+        - name: ELASTIC_APM_SERVER_URL
+          value: https://es02-apm-http.elk.svc.cluster.local:8200/
+        - name: ELASTIC_APM_JS_SERVER_URL
+          value: https://192.168.2.54:30201/
+        - name: ELASTIC_APM_VERIFY_SERVER_CERT
+          value: "false"
+        - name: ELASTIC_APM_SECRET_TOKEN
+          value: 7g63b1HyDj3Z9n9I8to70POC
+        - name: ELASTIC_APM_ENABLE_LOG_CORRELATION
+          value: "true"
+        - name: ELASTIC_APM_SERVICE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.labels['run']
+        - name: ELASTIC_APM_APPLICATION_PACKAGES
+          value: tools.descartes.teastore
+        - name: ELASTIC_APM_ENVIRONMENT
+          value: teastore-demo
+        - name: ELASTIC_APM_LOG_LEVEL
+          value: DEBUG
+        - name: JAVA_TOOL_OPTIONS
+          value: -javaagent:/elastic/apm/agent/elastic-apm-agent.jar
+        image: descartesresearch/teastore-registry
+        name: teastore-registry
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - mountPath: /elastic/apm/agent
+          name: elastic-apm-agent
+      initContainers:
+      - command:
+        - cp
+        - -v
+        - /usr/agent/elastic-apm-agent.jar
+        - /elastic/apm/agent
+        image: docker.elastic.co/observability/apm-agent-java:1.17.0
+        name: elastic-java-agent
+        volumeMounts:
+        - mountPath: /elastic/apm/agent
+          name: elastic-apm-agent
+      volumes:
+      - emptyDir: {}
+        name: elastic-apm-agent
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: teastore-webui
+  namespace: teastore
+spec:
+  selector:
+    matchLabels:
+      app: teastore
+      run: teastore-webui
+  template:
+    metadata:
+      labels:
+        app: teastore
+        instrument: appd-auto
+        run: teastore-webui
+    spec:
+      containers:
+      - env:
+        - name: HOST_NAME
+          value: teastore-webui
+        - name: REGISTRY_HOST
+          value: teastore-registry
+        - name: ELASTIC_APM_SERVER_URL
+          value: https://es02-apm-http.elk.svc.cluster.local:8200/
+        - name: ELASTIC_APM_JS_SERVER_URL
+          value: https://192.168.2.54:30201/
+        - name: ELASTIC_APM_VERIFY_SERVER_CERT
+          value: "false"
+        - name: ELASTIC_APM_SECRET_TOKEN
+          value: 7g63b1HyDj3Z9n9I8to70POC
+        - name: ELASTIC_APM_ENABLE_LOG_CORRELATION
+          value: "true"
+        - name: ELASTIC_APM_SERVICE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.labels['run']
+        - name: ELASTIC_APM_APPLICATION_PACKAGES
+          value: tools.descartes.teastore
+        - name: ELASTIC_APM_ENVIRONMENT
+          value: teastore-demo
+        - name: ELASTIC_APM_LOG_LEVEL
+          value: DEBUG
+        - name: JAVA_TOOL_OPTIONS
+          value: -javaagent:/elastic/apm/agent/elastic-apm-agent.jar
+        image: descartesresearch/teastore-webui
+        name: teastore-webui
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - mountPath: /elastic/apm/agent
+          name: elastic-apm-agent
+      initContainers:
+      - command:
+        - cp
+        - -v
+        - /usr/agent/elastic-apm-agent.jar
+        - /elastic/apm/agent
+        image: docker.elastic.co/observability/apm-agent-java:1.17.0
+        name: elastic-java-agent
+        volumeMounts:
+        - mountPath: /elastic/apm/agent
+          name: elastic-apm-agent
+      volumes:
+      - emptyDir: {}
+        name: elastic-apm-agent
