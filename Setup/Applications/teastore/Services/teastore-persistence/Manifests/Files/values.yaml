@@ -1,5 +1,4 @@
-name: teastore
-serviceName: teastore-persistence
+name: teastore-persistence
 replicas: 1
 
 image: ${artifact.metadata.image}
