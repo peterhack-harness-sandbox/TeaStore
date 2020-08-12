@@ -1,5 +1,4 @@
-name: teastore
-serviceName: teastore-recommender
+name: teastore-recommender
 replicas: 1
 
 image: ${artifact.metadata.image}
