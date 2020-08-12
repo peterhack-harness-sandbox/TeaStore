@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{.Values.serviceName}}
+  name: {{.Values.name}}
 data:
 {{.Values.env.config | toYaml | indent 2}}
 ---
@@ -12,7 +12,7 @@ data:
 apiVersion: v1
 kind: Secret
 metadata:
-  name: {{.Values.serviceName}}
+  name: {{.Values.name}}
 stringData:
 {{.Values.env.secrets | toYaml | indent 2}}
 ---
@@ -22,7 +22,7 @@ stringData:
 apiVersion: v1
 kind: Secret
 metadata:
-  name: {{.Values.serviceName}}-dockercfg
+  name: {{.Values.name}}-dockercfg
   annotations:
     harness.io/skip-versioning: true
 data:
@@ -34,34 +34,34 @@ type: kubernetes.io/dockercfg
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{.Values.serviceName}}
+  name: {{.Values.name}}
 spec:
   replicas: {{int .Values.replicas}}
   selector:
     matchLabels:
-      app: {{.Values.name}}
+      app: teastore
       run: {{.Values.serviceName}}
   template:
     metadata:
       labels:
-        app: {{.Values.name}}
-        run: {{.Values.serviceName}}
+        app: teastore
+        run: {{.Values.name}}
     spec:
       {{- if .Values.dockercfg}}
       imagePullSecrets:
       - name: {{.Values.serviceName}}-dockercfg
       {{- end}}
       containers:
-      - name: {{.Values.serviceName}}
+      - name: {{.Values.name}}
         image: {{.Values.image}}
         {{- if or .Values.env.config .Values.env.secrets}}
         envFrom:
         {{- if .Values.env.config}}
         - configMapRef:
-            name: {{.Values.serviceName}}
+            name: {{.Values.name}}
         {{- end}}
         {{- if .Values.env.secrets}}
         - secretRef:
-            name: {{.Values.serviceName}}
+            name: {{.Values.name}}
         {{- end}}
         {{- end}}
