@@ -39,12 +39,12 @@ spec:
   replicas: {{int .Values.replicas}}
   selector:
     matchLabels:
-      app: teashop
+      app: teastore
       run: {{.Values.name}}
   template:
     metadata:
       labels:
-        app: teashop
+        app: teastore
         run: {{.Values.name}}
     spec:
       {{- if .Values.dockercfg}}
