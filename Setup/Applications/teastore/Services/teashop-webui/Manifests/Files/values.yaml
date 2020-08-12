@@ -1,5 +1,4 @@
-name: teastore
-serviceName: teastore-webui
+name: teastore-webui
 replicas: 1
 
 image: ${artifact.metadata.image}
