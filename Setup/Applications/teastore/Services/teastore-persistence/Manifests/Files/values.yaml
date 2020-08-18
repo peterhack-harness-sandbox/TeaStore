@@ -23,7 +23,7 @@ serviceTargetPort: 8080
 # Both are added to the container environment in podSpec as envFrom source.
 env:
   config:
-    USE_POD_IP: "true"
+    HOST_NAME: "teastore-persistence"
     REGISTRY_HOST: "teastore-registry"
     DB_HOST: "teastore-db"
     DB_PORT: "3306"
