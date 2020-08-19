@@ -16,6 +16,13 @@ notificationRules:
   userGroupAsExpression: false
   userGroupIds:
   - LUDWMbfORzS9Xu2nTlNgqA
+- conditions:
+  - SUCCESS
+  executionScope: WORKFLOW
+  notificationGroupAsExpression: false
+  userGroupAsExpression: false
+  userGroupIds:
+  - Z8u219EaRW6cA0jXbuHGdA
 phases:
 - type: KUBERNETES
   computeProviderName: lab-minikube
