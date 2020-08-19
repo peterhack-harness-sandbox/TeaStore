@@ -61,4 +61,10 @@ rollbackPhases:
   provisionNodes: false
   serviceName: teashop-webui
   statefulSet: false
-templatized: false
+templatized: true
+userVariables:
+- type: TEXT
+  allowedValues: qa
+  fixed: false
+  mandatory: false
+  name: namespace
