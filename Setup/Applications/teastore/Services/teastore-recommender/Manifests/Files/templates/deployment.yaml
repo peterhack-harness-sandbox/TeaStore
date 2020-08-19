@@ -34,7 +34,7 @@ type: kubernetes.io/dockercfg
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{.Values.serviceName}}
+  name: {{.Values.name}}
 spec:
   replicas: {{int .Values.replicas}}
   selector:
