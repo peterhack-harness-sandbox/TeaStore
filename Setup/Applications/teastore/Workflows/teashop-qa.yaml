@@ -60,7 +60,10 @@ phases:
         ccAddress: ''
         ignoreDeliveryFailure: false
         subject: qa deployed
-        toAddress: peter.hack@harness.com
+        templateUuid: null
+        templateVariables: null
+        templateVersion: null
+        toAddress: peter.hack@harness.io
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
