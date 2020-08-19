@@ -46,6 +46,14 @@ phases:
         timeoutMillis: 60000
     - type: K8S_DEPLOYMENT_ROLLING
       name: Rollout Deployment
+    - type: EMAIL
+      name: Email
+      properties:
+        body: QA has been deployed to ${infra.kubernetes.namespace}
+        ccAddress: ''
+        ignoreDeliveryFailure: false
+        subject: qa deployed
+        toAddress: peter.hack@harness.io
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
