@@ -40,7 +40,7 @@ spec:
   selector:
     matchLabels:
       app: teastore
-      run: {{.Values.serviceName}}
+      run: {{.Values.name}}
   template:
     metadata:
       labels:
@@ -49,7 +49,7 @@ spec:
     spec:
       {{- if .Values.dockercfg}}
       imagePullSecrets:
-      - name: {{.Values.serviceName}}-dockercfg
+      - name: {{.Values.name}}-dockercfg
       {{- end}}
       containers:
       - name: {{.Values.name}}
