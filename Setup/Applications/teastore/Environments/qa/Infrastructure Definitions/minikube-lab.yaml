@@ -5,5 +5,5 @@ deploymentType: KUBERNETES
 infrastructure:
 - type: DIRECT_KUBERNETES
   cloudProviderName: lab-minikube
-  namespace: ${serviceVariable.namespace}
+  namespace: qa
   releaseName: release-${infra.kubernetes.infraId}
