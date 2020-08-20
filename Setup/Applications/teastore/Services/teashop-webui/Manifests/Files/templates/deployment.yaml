@@ -72,4 +72,5 @@ spec:
         {{- if eq .Values.apmDef "true"}}
         env:
 {{ .Values.env.apm | toYaml | indent 10}}
+        {{- end}}
       {{- end}}
