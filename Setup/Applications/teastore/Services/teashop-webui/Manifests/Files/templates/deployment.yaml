@@ -67,7 +67,7 @@ spec:
             name: {{.Values.name}}
         {{- end}}
         {{- end}}
-      {{- if eq .Values.apmDef .Values.apmDefault}}
+      {{- if eq .Values.apmDef .Values.apmGo}}
         env:
 {{ .Values.env.apm | toYaml | indent 10}}
       {{- end}}
