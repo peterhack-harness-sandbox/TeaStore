@@ -46,6 +46,7 @@ spec:
       labels:
         app: teastore
         run: {{.Values.name}}
+        apmCheck: {{.Values.apmDef}}
     spec:
       {{- if .Values.dockercfg}}
       imagePullSecrets:
