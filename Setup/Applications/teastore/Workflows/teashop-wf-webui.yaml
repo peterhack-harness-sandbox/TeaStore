@@ -139,8 +139,8 @@ userVariables:
   mandatory: true
   name: InfraDefinition_KUBERNETES
 - type: TEXT
-  allowedValues: 1,0
+  allowedValues: true,false
   fixed: false
   mandatory: true
   name: apmDef
-  value: '0'
+  value: 'false'
