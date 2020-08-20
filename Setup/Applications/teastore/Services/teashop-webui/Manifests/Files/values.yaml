@@ -1,7 +1,7 @@
 name: teastore-webui
 replicas: 1
 
-apmDef: ${workflow.variable.apmDef}
+apmDef: ${workflow.variables.apmDef}
 
 image: ${artifact.metadata.image}
 dockercfg: ${artifact.source.dockerconfig}
