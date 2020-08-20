@@ -67,7 +67,7 @@ spec:
         - secretRef:
             name: {{.Values.name}}
         {{- end}}
-        {{- if ".Values.apmDef"}}
+        {{- if .Values.apmDef}}
         env:
 {{ .Values.env.apm | toYaml | indent 10}}
         {{- end}}
