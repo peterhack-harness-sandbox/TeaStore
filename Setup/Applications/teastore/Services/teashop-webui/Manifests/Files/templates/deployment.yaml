@@ -69,7 +69,6 @@ spec:
         {{- end}}
       {{- if .Values.apmDef}}
         env:
-          echo: {{.Values.env.apm}}
 {{ .Values.env.apm | toYaml | indent 10}}
       {{- end}}
 
