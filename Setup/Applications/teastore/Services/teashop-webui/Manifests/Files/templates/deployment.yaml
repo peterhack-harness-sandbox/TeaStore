@@ -56,7 +56,7 @@ spec:
         image: {{.Values.image}}
         ports:
         - containerPort: {{.Values.serviceTargetPort}}
-        {{- if or .Values.env.config .Values.env.secrets .Values.env.apm}}
+        {{- if or .Values.env.config .Values.env.secrets}}
         envFrom:
         {{- if .Values.env.config}}
         - configMapRef:
@@ -66,8 +66,9 @@ spec:
         - secretRef:
             name: {{.Values.name}}
         {{- end}}
-        {{- if .Values.apmDef}}
+      {{- if .Values.apmDef}}
         env:
+          echo: {{.Values.env.apm}}
 {{ .Values.env.apm | toYaml | indent 10}}
         {{- end}}
         {{- end}}
