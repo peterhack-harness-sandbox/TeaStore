@@ -25,6 +25,11 @@ phases:
   phaseSteps:
   - type: K8S_PHASE_STEP
     name: Deploy
+    stepSkipStrategies:
+    - assertionExpression: database
+      scope: SPECIFIC_STEPS
+      steps:
+      - Wait for Database
     steps:
     - type: BARRIER
       name: Wait for Database
