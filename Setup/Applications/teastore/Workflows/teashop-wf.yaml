@@ -29,7 +29,10 @@ phases:
     - type: BARRIER
       name: Barrier
       properties:
-        identifier: database complete
+        identifier: db-deployed
+        templateUuid: null
+        templateVariables: null
+        templateVersion: null
         timeoutMillis: 60000
     - type: K8S_DEPLOYMENT_ROLLING
       name: Rollout Deployment
