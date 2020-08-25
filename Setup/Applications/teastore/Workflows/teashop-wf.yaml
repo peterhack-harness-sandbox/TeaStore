@@ -25,20 +25,7 @@ phases:
   phaseSteps:
   - type: K8S_PHASE_STEP
     name: Deploy
-    stepSkipStrategies:
-    - assertionExpression: database
-      scope: SPECIFIC_STEPS
-      steps:
-      - Wait for Database
     steps:
-    - type: BARRIER
-      name: Wait for Database
-      properties:
-        identifier: db-deployed
-        templateUuid: null
-        templateVariables: null
-        templateVersion: null
-        timeoutMillis: '120000'
     - type: K8S_DEPLOYMENT_ROLLING
       name: Rollout Deployment
     stepsInParallel: false
