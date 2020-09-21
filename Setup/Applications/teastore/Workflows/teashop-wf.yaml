@@ -8,6 +8,15 @@ failureStrategies:
   - APPLICATION_ERROR
   repairActionCode: ROLLBACK_WORKFLOW
   retryCount: 0
+- executionScope: WORKFLOW
+  failureTypes:
+  - VERIFICATION_FAILURE
+  repairActionCode: RETRY
+  repairActionCodeAfterRetry: MANUAL_INTERVENTION
+  retryCount: 2
+  retryIntervals:
+  - 30
+  - 60
 notificationRules:
 - conditions:
   - FAILED
