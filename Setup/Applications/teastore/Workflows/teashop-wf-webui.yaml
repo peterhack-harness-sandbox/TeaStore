@@ -33,7 +33,7 @@ phases:
         templateUuid: null
         templateVariables: null
         templateVersion: null
-        timeoutMillis: '120000'
+        timeoutMillis: '1200000'
     - type: K8S_DEPLOYMENT_ROLLING
       name: Rollout Deployment
     stepsInParallel: false
