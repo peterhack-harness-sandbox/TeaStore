@@ -24,6 +24,11 @@ serviceTargetPort: 8080
 # and a Secret, respectively.
 # Both are added to the container environment in podSpec as envFrom source.
 env:
+  - name: SIGNALFX_AGENT_HOST
+    valueFrom:
+      fieldRef:
+        apiVersion: v1
+        fieldPath: status.hostIP
   config:
     HOST_NAME: "teastore-webui"
     REGISTRY_HOST: "teastore-registry"  
