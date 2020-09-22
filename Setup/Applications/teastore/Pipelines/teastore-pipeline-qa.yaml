@@ -6,7 +6,7 @@ pipelineStages:
   parallel: false
   skipCondition:
     type: DO_NOT_SKIP
-  stageName: STAGE 1
+  stageName: STAGE 2
   workflowName: teashop-db-canary
   workflowVariables:
   - entityType: INFRASTRUCTURE_DEFINITION
@@ -17,7 +17,7 @@ pipelineStages:
     value: qa
 - type: ENV_STATE
   name: teashop-wf
-  parallel: false
+  parallel: true
   skipCondition:
     type: DO_NOT_SKIP
   stageName: STAGE 2
