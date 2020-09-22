@@ -38,6 +38,29 @@ phases:
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
+    steps:
+    - type: APM_VERIFICATION
+      name: APM Verification
+      properties:
+        analysisServerConfigId: 0aeEY9lTQvKYOu0j51M7dQ
+        comparisonStrategy: COMPARE_WITH_CURRENT
+        customThresholdRefId: 24b5f7c8a18148e183421dafbee2ed91
+        dataCollectionRate: 1
+        executeWithPreviousSteps: false
+        hostnameTemplate: ${instanceDetails.k8s.podName}
+        includePreviousPhaseNodes: false
+        metricCollectionInfos:
+        - method: GET
+          responseMapping:
+            txnNameFieldValue: container_cpu_utilization
+            metricValueJsonPath: data.Eid4UD2A0lo[*].[1]
+            timestampJsonPath: data.Eid4UD2A0lo[*].[0]
+          responseType: JSON
+          metricName: container_cpu_usage
+          metricType: INFRA
+          collectionUrl: ' v1/timeserieswindow?query=*&host:${host}'
+        timeDuration: 15
+        tolerance: LOW
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Wrap Up
