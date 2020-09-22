@@ -4,6 +4,7 @@ gitFileConfig:
   branch: master
   connectorName: peterhack-teastore
   useBranch: true
+  useInlineServiceDefinition: false
 kustomizeConfig:
   kustomizeDirPath: k8s/kustomize/teastore-es-apm
 storeType: KustomizeSourceRepo

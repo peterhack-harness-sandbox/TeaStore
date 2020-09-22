@@ -116,7 +116,7 @@ pipelineStages:
     value: dev
   - entityType: SERVICE
     name: Service
-    value: teashop-webui
+    value: teastore-webui
   - entityType: INFRASTRUCTURE_DEFINITION
     name: InfraDefinition_KUBERNETES
     value: dev-rolling
