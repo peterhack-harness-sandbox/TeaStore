@@ -115,7 +115,7 @@ pipelineStages:
     value: qa
   - entityType: SERVICE
     name: Service
-    value: teastore-webui
+    value: teastore-webui-qa
   - entityType: INFRASTRUCTURE_DEFINITION
     name: InfraDefinition_KUBERNETES
     value: minikube-lab
