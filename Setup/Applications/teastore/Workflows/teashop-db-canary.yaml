@@ -47,7 +47,7 @@ phases:
         customThresholdRefId: 24b5f7c8a18148e183421dafbee2ed91
         dataCollectionRate: 1
         executeWithPreviousSteps: false
-        hostnameTemplate: ${host}
+        hostnameTemplate: ${instanceDetails.hostName}
         includePreviousPhaseNodes: false
         metricCollectionInfos:
         - method: GET
