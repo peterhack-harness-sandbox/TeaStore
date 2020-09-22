@@ -47,18 +47,21 @@ phases:
         customThresholdRefId: 24b5f7c8a18148e183421dafbee2ed91
         dataCollectionRate: 1
         executeWithPreviousSteps: false
-        hostnameTemplate: ${instanceDetails.k8s.podName}
+        hostnameTemplate: ${host}
         includePreviousPhaseNodes: false
         metricCollectionInfos:
         - method: GET
           responseMapping:
             txnNameFieldValue: container_cpu_utilization
-            metricValueJsonPath: data.Eid4UD2A0lo[*].[1]
-            timestampJsonPath: data.Eid4UD2A0lo[*].[0]
+            metricValueJsonPath: data.${host}[*].[1]
+            timestampJsonPath: data.${host}[*].[0]
           responseType: JSON
           metricName: container_cpu_usage
           metricType: INFRA
           collectionUrl: ' v1/timeserieswindow?query=*&host:${host}'
+        templateUuid: null
+        templateVariables: null
+        templateVersion: null
         timeDuration: 15
         tolerance: LOW
     stepsInParallel: false
