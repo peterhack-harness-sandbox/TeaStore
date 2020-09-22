@@ -16,16 +16,6 @@ pipelineStages:
     name: Environment
     value: qa
 - type: ENV_STATE
-  name: teashop-qa
-  parallel: true
-  skipCondition:
-    type: DO_NOT_SKIP
-  stageName: STAGE 1
-  workflowName: teashop-qa
-  workflowVariables:
-  - name: namespace
-    value: qa
-- type: ENV_STATE
   name: teashop-wf-webui
   parallel: false
   skipCondition:
