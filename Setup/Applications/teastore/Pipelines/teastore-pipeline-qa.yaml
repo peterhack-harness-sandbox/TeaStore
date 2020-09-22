@@ -100,3 +100,22 @@ pipelineStages:
   - entityType: INFRASTRUCTURE_DEFINITION
     name: InfraDefinition_KUBERNETES
     value: minikube-lab
+- type: ENV_STATE
+  name: teashop-wf-webui
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 2
+  workflowName: teashop-wf-webui
+  workflowVariables:
+  - name: apmDef
+    value: 'false'
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: qa
+  - entityType: SERVICE
+    name: Service
+    value: teastore-webui
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_KUBERNETES
+    value: minikube-lab
