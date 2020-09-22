@@ -6,7 +6,7 @@ pipelineStages:
   parallel: false
   skipCondition:
     type: DO_NOT_SKIP
-  stageName: STAGE 2
+  stageName: STAGE 1
   workflowName: teashop-db-canary
   workflowVariables:
   - entityType: INFRASTRUCTURE_DEFINITION
@@ -20,7 +20,7 @@ pipelineStages:
   parallel: true
   skipCondition:
     type: DO_NOT_SKIP
-  stageName: STAGE 2
+  stageName: STAGE 1
   workflowName: teashop-wf
   workflowVariables:
   - entityType: ENVIRONMENT
@@ -29,6 +29,23 @@ pipelineStages:
   - entityType: SERVICE
     name: Service
     value: teastore-registry
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_KUBERNETES
+    value: minikube-lab
+- type: ENV_STATE
+  name: teashop-wf-1
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 1
+  workflowName: teashop-wf
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: qa
+  - entityType: SERVICE
+    name: Service
+    value: teastore-persistence
   - entityType: INFRASTRUCTURE_DEFINITION
     name: InfraDefinition_KUBERNETES
     value: minikube-lab
