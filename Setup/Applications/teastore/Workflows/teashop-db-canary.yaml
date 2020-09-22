@@ -82,6 +82,12 @@ phases:
       value: DOCKER
     - name: entityType
       value: INFRASTRUCTURE_DEFINITION
+postDeploymentSteps:
+- type: BARRIER
+  name: Database Deployed
+  properties:
+    identifier: db-deployed
+    timeoutMillis: 60000
 rollbackPhases:
 - type: KUBERNETES
   computeProviderName: lab-minikube
