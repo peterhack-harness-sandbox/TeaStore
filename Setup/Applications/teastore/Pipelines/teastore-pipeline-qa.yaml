@@ -15,3 +15,20 @@ pipelineStages:
   - entityType: ENVIRONMENT
     name: Environment
     value: qa
+- type: ENV_STATE
+  name: teashop-wf
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 2
+  workflowName: teashop-wf
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: qa
+  - entityType: SERVICE
+    name: Service
+    value: teastore-registry
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_KUBERNETES
+    value: minikube-lab
