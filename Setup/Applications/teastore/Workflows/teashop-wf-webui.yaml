@@ -46,8 +46,8 @@ phases:
         - method: GET
           responseMapping:
             txnNameFieldValue: container_cpu_utilization
-            metricValueJsonPath: data.Eimc_yHA484[*].[1]
-            timestampJsonPath: data.Eimc_yHA484[*].[0]
+            metricValueJsonPath: data.???????????[*].[1]
+            timestampJsonPath: data.???????????[*].[0]
             hostJsonPath: ''
           responseType: JSON
           metricName: container_cpu_utilization
