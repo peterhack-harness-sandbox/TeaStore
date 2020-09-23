@@ -36,7 +36,7 @@ phases:
       name: APM Verification
       properties:
         analysisServerConfigId: 0aeEY9lTQvKYOu0j51M7dQ
-        comparisonStrategy: COMPARE_WITH_CURRENT
+        comparisonStrategy: COMPARE_WITH_PREVIOUS
         customThresholdRefId: eef0061456a747cca63d221943f86d8c
         dataCollectionRate: 1
         executeWithPreviousSteps: false
