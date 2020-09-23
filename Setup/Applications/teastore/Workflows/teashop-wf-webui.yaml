@@ -46,12 +46,13 @@ phases:
         - method: GET
           responseMapping:
             txnNameFieldValue: container_cpu_utilization
-            metricValueJsonPath: data.EihOuc3A5HM[*].[1]
-            timestampJsonPath: data.EihOuc3A5HM[*].[0]
+            metricValueJsonPath: data.Eimc_yHA484[*].[1]
+            timestampJsonPath: data.Eimc_yHA484[*].[0]
+            hostJsonPath: ''
           responseType: JSON
           metricName: container_cpu_utilization
           metricType: INFRA
-          collectionUrl: v1/timeserieswindow?query=sf_metric:"cpu.usage.total"&container_hostname:${host}&startMs=${start_time}&endMs=${end_time}
+          collectionUrl: v1/timeserieswindow?query=sf_metric:"cpu.usage.total"%20AND%20container_hostname:${host}&startMs=${start_time}&endMs=${end_time}
         templateUuid: null
         templateVariables: null
         templateVersion: null
