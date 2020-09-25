@@ -45,7 +45,7 @@ phases:
         - name: sfxcpuid
           valueType: TEXT
           value: $[json select["results.id"]]
-        sweepingOutputName: SFXCPUID
+        sweepingOutputName: VARS
         sweepingOutputScope: WORKFLOW
         tags: null
         templateUuid: null
