@@ -66,7 +66,7 @@ phases:
         scriptString: |-
           echo **********
           echo The following is the output from the http request
-          echo ${workflow.var.SFXCPUID}
+          echo ${VAR.SFXCPUID}
           echo **********
         scriptType: BASH
         sshKeyRef: null
@@ -74,7 +74,9 @@ phases:
         sweepingOutputScope: null
         tags: null
         templateExpressions: null
-        templateVariables: ''
+        templateUuid: null
+        templateVariables: null
+        templateVersion: null
         timeoutMillis: 60000
     - type: APM_VERIFICATION
       name: APM Verification
