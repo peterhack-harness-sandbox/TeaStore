@@ -38,7 +38,7 @@ phases:
         assertion: ${httpResponseCode}==200
         body: ''
         executeWithPreviousSteps: false
-        header: X-SF-TOKEN=HcGWoKCQKwpFyxkVC1yIXg,query=sf_metric:cpu.usage.total%20AND%20container_hostname:${host}
+        header: X-SF-TOKEN:HcGWoKCQKwpFyxkVC1yIXg,(query=sf_metric:cpu.usage.total%20AND%20container_hostname:${host})
         method: GET
         publishAsVar: true
         responseProcessingExpressions:
