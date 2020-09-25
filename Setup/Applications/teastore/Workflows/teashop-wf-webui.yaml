@@ -38,7 +38,7 @@ phases:
         assertion: ${httpResponseCode}==200
         body: ''
         executeWithPreviousSteps: false
-        header: X-SF-TOKEN:HcGWoKCQKwpFyxkVC1yIXg,(query=sf_metric:cpu.usage.total%20AND%20container_hostname:${host})
+        header: X-SF-TOKEN:HcGWoKCQKwpFyxkVC1yIXg
         method: GET
         publishAsVar: true
         responseProcessingExpressions:
@@ -52,7 +52,7 @@ phases:
         templateVariables: null
         templateVersion: null
         timeoutMillis: 10000
-        url: https://api.us1.signalfx.com/v2/metrictimeseries
+        url: https://api.us1.signalfx.com/v2/metrictimeseries?query=sf_metric:"cpu.usage.total"%20AND%20"container_hostname":${host}
         useProxy: false
     - type: SHELL_SCRIPT
       name: Shell Script
