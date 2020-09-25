@@ -58,6 +58,26 @@ phases:
         templateVersion: null
         timeDuration: 5
         tolerance: LOW
+    - type: HTTP
+      name: HTTP
+      properties:
+        assertion: ${httpResponseCode}==200
+        body: ''
+        executeWithPreviousSteps: false
+        header: X-SF-TOKEN=HcGWoKCQKwpFyxkVC1yIXg
+        method: GET
+        publishAsVar: true
+        responseProcessingExpressions:
+        - name: sfxcpuid
+          valueType: TEXT
+          value: $[json select["results.id"]]
+        sweepingOutputName: SFXCPUID
+        sweepingOutputScope: WORKFLOW
+        tags: null
+        templateVariables: ''
+        timeoutMillis: 10000
+        url: https://api.us1.signalfx.com/v2/metrictimeseries?query=sf_metric:cpu.usage.total%20AND%20container_hostname:${host}
+        useProxy: false
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Wrap Up
