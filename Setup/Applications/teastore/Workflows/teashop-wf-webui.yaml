@@ -44,7 +44,7 @@ phases:
         responseProcessingExpressions:
         - name: sfxcpuid
           valueType: TEXT
-          value: $[json select["results.id"]]
+          value: $[json select["results[0.id]"]]
         sweepingOutputName: VARS
         sweepingOutputScope: WORKFLOW
         tags: null
@@ -52,7 +52,7 @@ phases:
         templateVariables: null
         templateVersion: null
         timeoutMillis: 10000
-        url: https://api.us1.signalfx.com/v2/metrictimeseries?query=sf_metric:"cpu.usage.total"%20AND%20"container_hostname":${host}
+        url: https://api.us1.signalfx.com/v2/metrictimeseries?query=sf_metric:"cpu.usage.total"%20AND%20"container_hostname":${instance.hostName}
         useProxy: false
     - type: SHELL_SCRIPT
       name: Shell Script
