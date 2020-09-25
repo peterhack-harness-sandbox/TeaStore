@@ -38,7 +38,7 @@ phases:
         assertion: ${httpResponseCode}==200
         body: ''
         executeWithPreviousSteps: false
-        header: X-SF-TOKEN=HcGWoKCQKwpFyxkVC1yIXg
+        header: X-SF-TOKEN=HcGWoKCQKwpFyxkVC1yIXg,query=sf_metric:cpu.usage.total%20AND%20container_hostname:${host}
         method: GET
         publishAsVar: true
         responseProcessingExpressions:
@@ -48,9 +48,11 @@ phases:
         sweepingOutputName: SFXCPUID
         sweepingOutputScope: WORKFLOW
         tags: null
-        templateVariables: ''
+        templateUuid: null
+        templateVariables: null
+        templateVersion: null
         timeoutMillis: 10000
-        url: https://api.us1.signalfx.com/v2/metrictimeseries?query=sf_metric:cpu.usage.total%20AND%20container_hostname:${host}
+        url: https://api.us1.signalfx.com/v2/metrictimeseries
         useProxy: false
     - type: SHELL_SCRIPT
       name: Shell Script
