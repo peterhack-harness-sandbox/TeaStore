@@ -63,8 +63,11 @@ phases:
         header: X-SF-TOKEN:HcGWoKCQKwpFyxkVC1yIXg
         method: GET
         publishAsVar: true
-        responseProcessingExpressions: null
-        sweepingOutputName: VARS
+        responseProcessingExpressions:
+        - name: id
+          valueType: TEXT
+          value: ${jsonpath('results[0].id')}
+        sweepingOutputName: SFX
         sweepingOutputScope: WORKFLOW
         tags: null
         templateUuid: null
