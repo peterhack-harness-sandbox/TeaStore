@@ -35,7 +35,7 @@ phases:
     - assertionExpression: 'false'
       scope: SPECIFIC_STEPS
       steps:
-      - APM Verification
+      - validate SFX ID
     steps:
     - type: SHELL_SCRIPT
       name: sleep
