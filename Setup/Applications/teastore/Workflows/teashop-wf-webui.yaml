@@ -71,7 +71,7 @@ phases:
         responseProcessingExpressions:
         - name: sfxcpuid
           valueType: TEXT
-          value: ${jsonpath('results[0].id')}
+          value: ${json.select("results[0].id", httpResponseBody)}
         sweepingOutputName: SFX
         sweepingOutputScope: WORKFLOW
         tags: null
