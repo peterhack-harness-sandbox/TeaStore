@@ -119,8 +119,8 @@ phases:
         - method: GET
           responseMapping:
             txnNameFieldValue: container_cpu_utilization
-            metricValueJsonPath: data.???????????[*].[1]
-            timestampJsonPath: data.???????????[*].[0]
+            metricValueJsonPath: data.${SFX.sfxcpuid}[*].[1]
+            timestampJsonPath: data.${SFX.sfxcpuid}[*].[0]
             hostJsonPath: ''
           responseType: JSON
           metricName: container_cpu_utilization
