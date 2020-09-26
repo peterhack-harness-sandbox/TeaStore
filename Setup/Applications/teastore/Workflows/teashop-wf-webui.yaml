@@ -57,7 +57,7 @@ phases:
     - type: HTTP
       name: Collect SFX ID
       properties:
-        assertion: ${httpResponseCode}==200
+        assertion: ${SFX.id}==EizLbbhA4hw
         body: ''
         executeWithPreviousSteps: false
         header: X-SF-TOKEN:HcGWoKCQKwpFyxkVC1yIXg
