@@ -88,7 +88,7 @@ phases:
         scriptString: |-
           echo **********
           echo The following is the output from the http request
-          echo ${VAR.sfxcpuid}
+          echo ${VARS.sfxcpuid}
           echo **********
         scriptType: BASH
         sshKeyRef: null
