@@ -77,7 +77,7 @@ phases:
         url: https://api.us1.signalfx.com/v2/metrictimeseries?query=sf_metric:cpu.usage.total%20AND%20container_hostname:${instance.hostName}
         useProxy: false
     - type: SHELL_SCRIPT
-      name: Shell Script
+      name: Collect SFX ID
       properties:
         commandPath: null
         connectionAttributes: null
