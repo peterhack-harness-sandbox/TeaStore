@@ -31,11 +31,6 @@ phases:
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
-    stepSkipStrategies:
-    - assertionExpression: 'false'
-      scope: SPECIFIC_STEPS
-      steps:
-      - validate SFX ID
     steps:
     - type: SHELL_SCRIPT
       name: sleep
