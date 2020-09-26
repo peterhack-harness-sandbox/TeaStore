@@ -128,10 +128,10 @@ phases:
         tolerance: LOW
     stepsInParallel: false
   - type: K8S_PHASE_STEP
-    name: Wrap Up
+    name: SFX PREP
     stepsInParallel: false
   - type: K8S_PHASE_STEP
-    name: SFX PREP
+    name: Wrap Up
     stepsInParallel: false
   provisionNodes: false
   serviceName: teastore-webui
