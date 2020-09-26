@@ -85,7 +85,7 @@ phases:
         scriptString: |-
           echo **********
           echo The following is the output from the http request
-          echo ${VARS[*]}
+          echo ${context.get(VARS[*])}
           echo **********
         scriptType: BASH
         sshKeyRef: null
