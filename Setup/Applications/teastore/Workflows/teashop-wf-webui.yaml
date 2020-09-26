@@ -93,7 +93,7 @@ phases:
         scriptString: |-
           echo **********
           echo The following is the output from the http request
-          echo ${SFX[0].id}
+          echo ${SFX.sfxcpuid}
           echo **********
         scriptType: BASH
         sshKeyRef: null
