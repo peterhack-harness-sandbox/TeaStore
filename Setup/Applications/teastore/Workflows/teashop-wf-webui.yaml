@@ -63,10 +63,7 @@ phases:
         header: X-SF-TOKEN:HcGWoKCQKwpFyxkVC1yIXg
         method: GET
         publishAsVar: true
-        responseProcessingExpressions:
-        - name: sfxcpuid
-          valueType: TEXT
-          value: $[json select['results[0].id']]
+        responseProcessingExpressions: null
         sweepingOutputName: VARS
         sweepingOutputScope: WORKFLOW
         tags: null
