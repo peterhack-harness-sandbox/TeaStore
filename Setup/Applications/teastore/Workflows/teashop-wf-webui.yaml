@@ -30,6 +30,9 @@ phases:
       name: Rollout Deployment
     stepsInParallel: false
   - type: K8S_PHASE_STEP
+    name: SFX PREP
+    stepsInParallel: false
+  - type: K8S_PHASE_STEP
     name: Verify
     steps:
     - type: SHELL_SCRIPT
@@ -126,9 +129,6 @@ phases:
         templateVersion: null
         timeDuration: 5
         tolerance: LOW
-    stepsInParallel: false
-  - type: K8S_PHASE_STEP
-    name: SFX PREP
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Wrap Up
