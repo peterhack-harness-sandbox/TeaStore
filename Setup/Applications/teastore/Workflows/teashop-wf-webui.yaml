@@ -66,7 +66,7 @@ phases:
         responseProcessingExpressions:
         - name: sfxcpuid
           valueType: TEXT
-          value: $[json select["results[0]"]]
+          value: $[json select['results[0].id]']
         sweepingOutputName: VARS
         sweepingOutputScope: WORKFLOW
         tags: null
