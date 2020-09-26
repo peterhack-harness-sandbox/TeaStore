@@ -43,7 +43,7 @@ phases:
         publishAsVar: false
         scriptString: |-
           # pause to wait for container registration in SFX
-          sleep 10
+          sleep 5
         scriptType: BASH
         sshKeyRef: null
         sweepingOutputName: null
