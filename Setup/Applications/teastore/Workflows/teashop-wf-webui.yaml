@@ -120,7 +120,7 @@ phases:
           responseType: JSON
           metricName: container_cpu_utilization
           metricType: INFRA
-          collectionUrl: v1/timeserieswindow?query=sf_metric:"cpu.usage.total"%20AND%20container_hostname:${host}&startMs=${start_time}&endMs=${end_time}&resolution:60000
+          collectionUrl: v1/timeserieswindow?query=sf_metric:"cpu.usage.total"%20AND%20container_hostname:${host}&startMs=${start_time}&endMs=${end_time}&resolution:300000
         templateUuid: null
         templateVariables: null
         templateVersion: null
