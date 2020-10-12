@@ -1,5 +1,5 @@
 name: teastore-webui
-replicas: 1
+replicas: 2
 
 apmDef: ${workflow.variables.apmDef}
 
