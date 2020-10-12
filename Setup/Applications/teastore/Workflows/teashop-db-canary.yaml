@@ -54,8 +54,8 @@ phases:
           responseMapping:
             txnNameFieldValue: container_cpu_utilization
             metricValueJsonPath: data.*[0].[1]
-            timestampJsonPath: data.${host}[*].[0]
-            hostJsonPath: data.*[0].[0]
+            timestampJsonPath: data.*[0].[0]
+            hostJsonPath: data.*[*].[*]
           responseType: JSON
           metricName: container_cpu_utilization
           metricType: INFRA
