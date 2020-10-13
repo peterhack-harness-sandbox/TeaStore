@@ -83,16 +83,17 @@ phases:
         connectionAttributes: null
         executeOnDelegate: true
         host: null
-        outputVars: ''
-        publishAsVar: false
+        outputVars: id,metric
+        publishAsVar: true
         scriptString: |
           #echo $(jq '.results[] |"\(.id) \(.metric)"' ${json.format(SFX.sfxarray)}) > /tmp/array.json
           printf ${json.format(SFX.sfxarray)} > /tmp/array.json
-          printf "${SFX.sfxarray.id[0]} $SFX.sfxarray.metric[0]"
+          id=$(jq -r '.results[] | .id | @sh' array.json)
+          metric=$(jq -r '.results[] | .metric | @sh' array.json)
         scriptType: BASH
         sshKeyRef: null
-        sweepingOutputName: null
-        sweepingOutputScope: null
+        sweepingOutputName: signalfx
+        sweepingOutputScope: WORKFLOW
         tags: null
         templateExpressions: null
         templateUuid: null
