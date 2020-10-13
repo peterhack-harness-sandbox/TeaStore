@@ -32,7 +32,7 @@ phases:
   - type: K8S_PHASE_STEP
     name: Verify
     stepSkipStrategies:
-    - assertionExpression: ${service.variables.apmDef}
+    - assertionExpression: ${workflow.variables.apmDef}==true
       scope: SPECIFIC_STEPS
       steps:
       - validate SFX ID
