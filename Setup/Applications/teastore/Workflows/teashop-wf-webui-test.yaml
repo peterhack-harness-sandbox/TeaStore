@@ -35,7 +35,6 @@ phases:
     - assertionExpression: ${workflow.variables.apmDef}==true
       scope: SPECIFIC_STEPS
       steps:
-      - validate SFX ID
       - APM Verification
     steps:
     - type: SHELL_SCRIPT
@@ -92,30 +91,6 @@ phases:
         outputVars: ''
         publishAsVar: false
         scriptString: 'echo ${SFX.sfxarray} '
-        scriptType: BASH
-        sshKeyRef: null
-        sweepingOutputName: null
-        sweepingOutputScope: null
-        tags: null
-        templateExpressions: null
-        templateUuid: null
-        templateVariables: null
-        templateVersion: null
-        timeoutMillis: 60000
-    - type: SHELL_SCRIPT
-      name: validate SFX ID
-      properties:
-        commandPath: null
-        connectionAttributes: null
-        executeOnDelegate: true
-        host: null
-        outputVars: ''
-        publishAsVar: false
-        scriptString: |-
-          echo **********
-          echo The following is the output from the http request
-          echo ${SFX.sfxcpuid}
-          echo **********
         scriptType: BASH
         sshKeyRef: null
         sweepingOutputName: null
