@@ -31,11 +31,6 @@ phases:
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
-    stepSkipStrategies:
-    - assertionExpression: ${workflow.variables.apmDef}==true
-      scope: SPECIFIC_STEPS
-      steps:
-      - APM Verification
     steps:
     - type: SHELL_SCRIPT
       name: sleep
@@ -101,32 +96,6 @@ phases:
         templateVariables: null
         templateVersion: null
         timeoutMillis: 60000
-    - type: APM_VERIFICATION
-      name: APM Verification
-      properties:
-        analysisServerConfigId: 0aeEY9lTQvKYOu0j51M7dQ
-        comparisonStrategy: COMPARE_WITH_PREVIOUS
-        customThresholdRefId: eef0061456a747cca63d221943f86d8c
-        dataCollectionRate: 1
-        executeWithPreviousSteps: false
-        hostnameTemplate: ${instanceDetails.k8s.podName}
-        includePreviousPhaseNodes: false
-        metricCollectionInfos:
-        - method: GET
-          responseMapping:
-            txnNameFieldValue: container_cpu_utilization
-            metricValueJsonPath: data.${SFX.sfxcpuid}[*].[1]
-            timestampJsonPath: data.${SFX.sfxcpuid}[*].[0]
-            hostJsonPath: ''
-          responseType: JSON
-          metricName: container_cpu_utilization
-          metricType: INFRA
-          collectionUrl: v1/timeserieswindow?query=sf_metric:"cpu.usage.total"%20AND%20container_hostname:${host}&startMs=${start_time}&endMs=${end_time}&resolution:300000
-        templateUuid: null
-        templateVariables: null
-        templateVersion: null
-        timeDuration: 5
-        tolerance: LOW
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Wrap Up
