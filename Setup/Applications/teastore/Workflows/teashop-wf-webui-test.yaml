@@ -32,7 +32,7 @@ phases:
   - type: K8S_PHASE_STEP
     name: Verify
     stepSkipStrategies:
-    - assertionExpression: apm
+    - assertionExpression: apmDef
       scope: SPECIFIC_STEPS
       steps:
       - validate SFX ID
