@@ -91,7 +91,7 @@ phases:
         host: null
         outputVars: ''
         publishAsVar: false
-        scriptString: 'echo ${json.format(VARS.SFX)} '
+        scriptString: 'echo ${json.format($sfxarray} '
         scriptType: BASH
         sshKeyRef: null
         sweepingOutputName: null
