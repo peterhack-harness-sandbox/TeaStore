@@ -91,9 +91,7 @@ phases:
         host: null
         outputVars: ''
         publishAsVar: false
-        scriptString: |-
-          echo -e ${sfxcpuid} > /tmp/array.json
-          jq -C ${sfxcpuid[@]}
+        scriptString: echo -e ${sfxcpuid[*]} > /tmp/array.json
         scriptType: BASH
         sshKeyRef: null
         sweepingOutputName: null
