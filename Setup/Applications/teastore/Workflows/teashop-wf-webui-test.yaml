@@ -70,9 +70,9 @@ phases:
         method: GET
         publishAsVar: true
         responseProcessingExpressions:
-        - name: sfxcpuid
+        - name: sfxarray
           valueType: TEXT
-          value: ${json.select("results", httpResponseBody)}
+          value: ${httpResponseBody}
         sweepingOutputName: SFX
         sweepingOutputScope: WORKFLOW
         tags: null
