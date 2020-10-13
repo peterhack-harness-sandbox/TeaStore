@@ -66,7 +66,7 @@ phases:
         responseProcessingExpressions:
         - name: sfxcpuid
           valueType: TEXT
-          value: ${json.select("results[0].id", httpResponseBody)}
+          value: ${json.select("results", httpResponseBody)}
         sweepingOutputName: SFX
         sweepingOutputScope: WORKFLOW
         tags: null
@@ -74,7 +74,7 @@ phases:
         templateVariables: null
         templateVersion: null
         timeoutMillis: 10000
-        url: https://api.us1.signalfx.com/v2/metrictimeseries?query=sf_metric:cpu.usage.total%20AND%20container_hostname:${instance.hostName}
+        url: https://api.us1.signalfx.com/v2/metrictimeseries?query=container_hostname:${instance.hostName}
         useProxy: false
     - type: SHELL_SCRIPT
       name: validate SFX ID
