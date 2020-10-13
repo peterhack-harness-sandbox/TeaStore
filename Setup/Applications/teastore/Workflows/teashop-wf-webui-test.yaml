@@ -85,9 +85,7 @@ phases:
         host: null
         outputVars: ''
         publishAsVar: false
-        scriptString: "jq '.results[] |\"\\(.id) \\(.metric)\"' ${json.format(SFX.sfxarray)}\
-          \ \njq '.results[] |\"\\(.id) \\(.metric)\"' ${json.format(SFX.sfxarray)}\
-          \ > /tmp/array.json\n"
+        scriptString: echo $(jq '.results[] |"\(.id) \(.metric)"' ${json.format(SFX.sfxarray)}) > /tmp/array.json
         scriptType: BASH
         sshKeyRef: null
         sweepingOutputName: null
