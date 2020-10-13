@@ -91,7 +91,7 @@ phases:
         host: null
         outputVars: ''
         publishAsVar: false
-        scriptString: printf '%s|' "${sfxcpuid[@]}"; echo
+        scriptString: echo ${sfxcpuid[]}
         scriptType: BASH
         sshKeyRef: null
         sweepingOutputName: null
