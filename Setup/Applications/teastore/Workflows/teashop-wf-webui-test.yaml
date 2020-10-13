@@ -64,9 +64,12 @@ phases:
         method: GET
         publishAsVar: true
         responseProcessingExpressions:
-        - name: sfxarray
+        - name: sfxarray.id
           valueType: TEXT
-          value: ${httpResponseBody}
+          value: ${json.select(.results[@].id,httpResponseBody)}
+        - name: sfxarray.metric
+          valueType: TEXT
+          value: ${json.select(results[@].metric,httpResponseBody)}
         sweepingOutputName: SFX
         sweepingOutputScope: WORKFLOW
         tags: null
