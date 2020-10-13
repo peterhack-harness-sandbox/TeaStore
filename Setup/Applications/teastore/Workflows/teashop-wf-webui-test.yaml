@@ -31,6 +31,12 @@ phases:
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
+    stepSkipStrategies:
+    - assertionExpression: ${sfxcpuid}
+      scope: SPECIFIC_STEPS
+      steps:
+      - validate SFX ID
+      - APM Verification
     steps:
     - type: SHELL_SCRIPT
       name: sleep
