@@ -90,7 +90,7 @@ phases:
         publishAsVar: false
         scriptString: |
           #echo $(jq '.results[] |"\(.id) \(.metric)"' ${json.format(SFX.sfxarray)}) > /tmp/array.json
-          # printf ${json.format(SFX.sfxarray)} > /tmp/array.json
+          printf ${json.format(SFX.sfxarray)} > /tmp/array.json
           printf "${SFX.sfxarray.id[0]} $SFX.sfxarray.metric[0]"
         scriptType: BASH
         sshKeyRef: null
