@@ -91,14 +91,16 @@ phases:
         host: null
         outputVars: ''
         publishAsVar: false
-        scriptString: print ${sfxcpuid}
+        scriptString: printf '%s|' "${sfxcpuid[@]}"; echo
         scriptType: BASH
         sshKeyRef: null
         sweepingOutputName: null
         sweepingOutputScope: null
         tags: null
         templateExpressions: null
-        templateVariables: ''
+        templateUuid: null
+        templateVariables: null
+        templateVersion: null
         timeoutMillis: 60000
     - type: SHELL_SCRIPT
       name: validate SFX ID
