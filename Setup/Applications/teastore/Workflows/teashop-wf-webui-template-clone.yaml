@@ -58,19 +58,6 @@ phases:
         templateVersion: null
         timeDuration: 5
         tolerance: LOW
-    - type: CLOUD_WATCH
-      name: CloudWatch
-      properties:
-        analysisServerConfigId: BGLhpx-FQXi8aKdPVzrYIg
-        analysisTolerance: LOW
-        comparisonStrategy: COMPARE_WITH_PREVIOUS
-        ec2Metrics: null
-        ecsMetrics: null
-        loadBalancerMetrics: null
-        region: us-east-2
-        shouldDoECSClusterVerification: false
-        shouldDoLambdaVerification: true
-        timeDuration: 15
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Wrap Up
