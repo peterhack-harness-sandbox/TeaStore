@@ -91,7 +91,7 @@ phases:
         host: null
         outputVars: ''
         publishAsVar: false
-        scriptString: echo -e ${sfxcpuid[*]} > /tmp/array.json
+        scriptString: 'echo ${json.format(VARS.SFX)} '
         scriptType: BASH
         sshKeyRef: null
         sweepingOutputName: null
