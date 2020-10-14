@@ -60,7 +60,7 @@ phases:
         assertion: ${httpResponseCode}==200
         body: ''
         executeWithPreviousSteps: false
-        header: X-SF-TOKEN:${secrets.getValue("sfxtoken")
+        header: ''
         method: GET
         publishAsVar: true
         responseProcessingExpressions:
@@ -74,7 +74,7 @@ phases:
         templateVariables: null
         templateVersion: null
         timeoutMillis: 10000
-        url: https://api.us1.signalfx.com/v2/metrictimeseries?query=container_hostname:${instance.hostName}
+        url: https://api.us1.signalfx.com/v2/metrictimeseries?query=container_hostname:${instance.hostName} -h X-SF-TOKEN:${secrets.getValue("sfxtoken")
         useProxy: false
     - type: SHELL_SCRIPT
       name: Shell Script_2
