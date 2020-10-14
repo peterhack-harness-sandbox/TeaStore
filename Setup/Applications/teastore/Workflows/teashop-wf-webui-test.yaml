@@ -83,7 +83,7 @@ phases:
         connectionAttributes: null
         executeOnDelegate: true
         host: null
-        outputVars: cpu_usage_total,cpu_usage_system,memory_usage_total,network_usage_tx_bytes,network_usage_rx_bytes
+        outputVars: cpu_usage_total,cpu_usage_system,memory_usage_total,network_usage_tx_bytes,network_usage_rx_bytes,memory_usage_limit
         publishAsVar: true
         scriptString: |-
           #echo $(jq '.results[] |"\(.id) \(.metric)"' ${json.format(SFX.sfxarray)}) > /tmp/array.json
