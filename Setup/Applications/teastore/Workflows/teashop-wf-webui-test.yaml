@@ -60,7 +60,7 @@ phases:
         assertion: ${httpResponseCode}==200
         body: ''
         executeWithPreviousSteps: false
-        header: X-SF-TOKEN:${secrets.getValue("signalfxtoken")
+        header: X-SF-TOKEN:${secrets.getValue("sfxtoken")
         method: GET
         publishAsVar: true
         responseProcessingExpressions:
