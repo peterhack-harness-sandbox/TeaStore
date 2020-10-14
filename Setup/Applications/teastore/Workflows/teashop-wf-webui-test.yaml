@@ -83,7 +83,7 @@ phases:
         connectionAttributes: null
         executeOnDelegate: true
         host: null
-        outputVars: ''
+        outputVars: $(cat /tmp/array.json | jq -r '.results[] | .metric' | sed -n "s/\./_/gp"
         publishAsVar: true
         scriptString: "#echo $(jq '.results[] |\"\\(.id) \\(.metric)\"' ${json.format(SFX.sfxarray)})\
           \ > /tmp/array.json\nprintf ${json.format(SFX.sfxarray)} > /tmp/array.json\n\
