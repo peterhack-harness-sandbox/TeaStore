@@ -129,10 +129,11 @@ phases:
       name: APM Verification
       properties:
         analysisServerConfigId: 0aeEY9lTQvKYOu0j51M7dQ
-        comparisonStrategy: COMPARE_WITH_CURRENT
+        comparisonStrategy: COMPARE_WITH_PREVIOUS
         customThresholdRefId: 13f72e2c470642018c62c7f0bc585979
         dataCollectionRate: 1
         executeWithPreviousSteps: false
+        hostnameTemplate: ${instanceDetails.hostName}
         includePreviousPhaseNodes: false
         metricCollectionInfos:
         - method: GET
