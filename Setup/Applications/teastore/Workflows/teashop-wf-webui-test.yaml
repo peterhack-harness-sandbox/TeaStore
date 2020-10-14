@@ -89,6 +89,7 @@ phases:
           printf ${json.format(SFX.sfxarray)} > array.json
           cat array.json | jq -r '.results[] | .metric+"="+.id' | sed -n "s/\./_/gp" > sfx.sh
           source sfx.sh
+          rm -f array.json sfx.sh
         scriptType: BASH
         sshKeyRef: null
         sweepingOutputName: signalfx
