@@ -111,12 +111,12 @@ phases:
         outputVars: ''
         publishAsVar: false
         scriptString: |-
-          echo "memory_usage_limit ${signalfx.memory_usage_limit}"\n
-          echo "cpu_usage_total ${signalfx.cpu_usage_total}"\n
-          echo "cpu_usage_system ${signalfx.cpu_usage_system}"\n
-          echo "memory_usage_total ${signalfx.memory_usage_total}"\n
-          echo "network_usage_tx ${signalfx.network_usage_tx_bytes}"\n
-          echo "network_usage_rx ${signalfx.network_usage_rx_bytes}"\n
+          echo "memory_usage_limit ${signalfx.memory_usage_limit}"
+          echo "cpu_usage_total ${signalfx.cpu_usage_total}"
+          echo "cpu_usage_system ${signalfx.cpu_usage_system}"
+          echo "memory_usage_total ${signalfx.memory_usage_total}"
+          echo "network_usage_tx ${signalfx.network_usage_tx_bytes}"
+          echo "network_usage_rx ${signalfx.network_usage_rx_bytes}"
         scriptType: BASH
         sshKeyRef: null
         sweepingOutputName: null
