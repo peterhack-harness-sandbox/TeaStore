@@ -110,17 +110,21 @@ phases:
         outputVars: ''
         publishAsVar: false
         scriptString: |-
-          printf ${workflow.variables.signalfx.id[0]}
-          printf ${workflow.variables.signalfx.metric[0]}
-          printf ${workflow.variables.signalfx.id[1]}
-          printf ${workflow.variables.signalfx.metric[1]}
+          printf ${workflow.variables.signalfx.memory_usage_limit}
+          printf ${workflow.variables.signalfx.cpu_usage_total}
+          printf ${workflow.variables.signalfx.cpu_usage_system}
+          printf ${workflow.variables.signalfx.memory_usage_total}
+          printf ${workflow.variables.signalfx.network_usage_tx_bytes}
+          printf ${workflow.variables.signalfx.network_usage_rx_bytes}
         scriptType: BASH
         sshKeyRef: null
         sweepingOutputName: null
         sweepingOutputScope: null
         tags: null
         templateExpressions: null
-        templateVariables: ''
+        templateUuid: null
+        templateVariables: null
+        templateVersion: null
         timeoutMillis: 60000
     stepsInParallel: false
   - type: K8S_PHASE_STEP
