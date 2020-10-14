@@ -83,13 +83,13 @@ phases:
         connectionAttributes: null
         executeOnDelegate: true
         host: null
-        outputVars: id,metric
+        outputVars: ''
         publishAsVar: true
-        scriptString: |
-          #echo $(jq '.results[] |"\(.id) \(.metric)"' ${json.format(SFX.sfxarray)}) > /tmp/array.json
-          printf ${json.format(SFX.sfxarray)} > /tmp/array.json
-          id=$(jq -r '.results[] | .id | @sh' array.json)
-          metric=$(jq -r '.results[] | .metric | @sh' array.json)
+        scriptString: "#echo $(jq '.results[] |\"\\(.id) \\(.metric)\"' ${json.format(SFX.sfxarray)})\
+          \ > /tmp/array.json\nprintf ${json.format(SFX.sfxarray)} > /tmp/array.json\n\
+          #id=$(jq -r '.results[] | .id | @sh' array.json)\n#metric=$(jq -r '.results[]\
+          \ | .metric | @sh' array.json)\ncat /tmp/array.json | jq -r '.results[]\
+          \ | .metric+\"=\"+.id' | sed -n \"s/\\./_/gp\" "
         scriptType: BASH
         sshKeyRef: null
         sweepingOutputName: signalfx
