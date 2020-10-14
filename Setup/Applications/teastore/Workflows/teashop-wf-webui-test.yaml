@@ -111,12 +111,12 @@ phases:
         outputVars: ''
         publishAsVar: false
         scriptString: |-
-          printf ${workflow.variables.signalfx.memory_usage_limit}
-          printf ${workflow.variables.signalfx.cpu_usage_total}
-          printf ${workflow.variables.signalfx.cpu_usage_system}
-          printf ${workflow.variables.signalfx.memory_usage_total}
-          printf ${workflow.variables.signalfx.network_usage_tx_bytes}
-          printf ${workflow.variables.signalfx.network_usage_rx_bytes}
+          printf ${signalfx.memory_usage_limit}
+          printf ${signalfx.cpu_usage_total}
+          printf ${signalfx.cpu_usage_system}
+          printf ${signalfx.memory_usage_total}
+          printf ${signalfx.network_usage_tx_bytes}
+          printf ${signalfx.network_usage_rx_bytes}
         scriptType: BASH
         sshKeyRef: null
         sweepingOutputName: null
