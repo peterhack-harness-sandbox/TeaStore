@@ -77,7 +77,7 @@ phases:
         url: https://api.us1.signalfx.com/v2/metrictimeseries?query=container_hostname:${instance.hostName}
         useProxy: false
     - type: SHELL_SCRIPT
-      name: SignalFX Collect Metric IDs
+      name: Shell Script
       properties:
         commandPath: null
         connectionAttributes: null
