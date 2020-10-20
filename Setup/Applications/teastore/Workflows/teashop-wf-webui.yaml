@@ -33,7 +33,7 @@ phases:
     name: Verify
     steps:
     - type: SHELL_SCRIPT
-      name: sleep
+      name: hello
       properties:
         commandPath: null
         connectionAttributes: null
