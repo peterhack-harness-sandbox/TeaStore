@@ -109,8 +109,10 @@ pipelineStages:
   skipCondition:
     type: DO_NOT_SKIP
   stageName: Teashop WebUI Workflows
-  workflowName: teashop-wf-webui
+  workflowName: teashop-wf-webui-test
   workflowVariables:
+  - name: apmDef
+    value: 'false'
   - entityType: ENVIRONMENT
     name: Environment
     value: dev
