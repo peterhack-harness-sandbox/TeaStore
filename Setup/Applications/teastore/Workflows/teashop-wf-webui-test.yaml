@@ -55,7 +55,7 @@ phases:
         templateVersion: null
         timeoutMillis: 60000
     - type: HTTP
-      name: SignalFx Gather Metric Dimensions
+      name: SignalFx Gather Metric Dimension IDs
       properties:
         assertion: ${httpResponseCode}==200
         body: ''
