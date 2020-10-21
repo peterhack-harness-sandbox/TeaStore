@@ -1,8 +1,6 @@
 name: teastore-webui
 replicas: 1
 
-apmDef: ${workflow.variables.apmDef}
-
 image: ${artifact.metadata.image}
 dockercfg: ${artifact.source.dockerconfig}
 
@@ -27,10 +25,3 @@ env:
   config:
     HOST_NAME: "teastore-webui"
     REGISTRY_HOST: "teastore-registry"  
-  apm:
-    - name: APPDYNAMICS_NETVIZ_AGENT_PORT 
-      value: "3892"
-    - name: APPDYNAMICS_NETVIZ_AGENT_HOST
-      valueFrom:
-        fieldRef:
-          fieldPath: status.hostIP
