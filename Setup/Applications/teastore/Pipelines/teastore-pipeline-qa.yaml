@@ -2,19 +2,22 @@ harnessApiVersion: '1.0'
 type: PIPELINE
 pipelineStages:
 - type: ENV_STATE
-  name: teashop-db-canary
+  name: teashop-db
   parallel: false
   skipCondition:
     type: DO_NOT_SKIP
   stageName: STAGE 1
-  workflowName: teashop-db-canary
+  workflowName: teashop-wf-db
   workflowVariables:
-  - entityType: INFRASTRUCTURE_DEFINITION
-    name: InfraDefinition_Kubernetes
-    value: minikube-lab
   - entityType: ENVIRONMENT
     name: Environment
     value: qa
+  - entityType: SERVICE
+    name: Service
+    value: teastore-db
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_KUBERNETES
+    value: minikube-lab
 - type: ENV_STATE
   name: teashop-wf
   parallel: true
