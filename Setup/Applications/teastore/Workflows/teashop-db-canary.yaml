@@ -38,33 +38,6 @@ phases:
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
-    steps:
-    - type: APM_VERIFICATION
-      name: APM Verification
-      properties:
-        analysisServerConfigId: 0aeEY9lTQvKYOu0j51M7dQ
-        comparisonStrategy: COMPARE_WITH_CURRENT
-        customThresholdRefId: 24b5f7c8a18148e183421dafbee2ed91
-        dataCollectionRate: 1
-        executeWithPreviousSteps: false
-        hostnameTemplate: ${instanceDetails.hostName}
-        includePreviousPhaseNodes: false
-        metricCollectionInfos:
-        - method: GET
-          responseMapping:
-            txnNameFieldValue: container_cpu_utilization
-            metricValueJsonPath: data.*[0].[1]
-            timestampJsonPath: data.*[0].[0]
-            hostJsonPath: data.*[*].[*]
-          responseType: JSON
-          metricName: container_cpu_utilization
-          metricType: INFRA
-          collectionUrl: v1/timeserieswindow?query=sf_metric:"cpu.usage.total"%20AND%20container_hostname:${host}&startMs=${start_time}&endMs=${end_time}&resolution:300000
-        templateUuid: null
-        templateVariables: null
-        templateVersion: null
-        timeDuration: 5
-        tolerance: LOW
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Wrap Up
