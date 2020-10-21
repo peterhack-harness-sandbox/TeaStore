@@ -104,7 +104,7 @@ pipelineStages:
     name: InfraDefinition_KUBERNETES
     value: minikube-lab
 - type: ENV_STATE
-  name: teashop-wf-webui
+  name: teastore-webui-qa
   parallel: false
   skipCondition:
     type: DO_NOT_SKIP
