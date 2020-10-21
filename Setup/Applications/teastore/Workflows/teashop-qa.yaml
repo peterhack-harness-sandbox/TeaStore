@@ -35,17 +35,6 @@ phases:
     steps:
     - type: K8S_DEPLOYMENT_ROLLING
       name: Rollout Deployment
-    - type: EMAIL
-      name: Email
-      properties:
-        body: QA has been deployed to ${infra.kubernetes.namespace}
-        ccAddress: ''
-        ignoreDeliveryFailure: false
-        subject: qa deployed
-        templateUuid: null
-        templateVariables: null
-        templateVersion: null
-        toAddress: peter.hack@harness.io
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
