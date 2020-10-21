@@ -109,7 +109,7 @@ pipelineStages:
   skipCondition:
     type: DO_NOT_SKIP
   stageName: Teashop WebUI Workflows
-  workflowName: teashop-wf-webui-test
+  workflowName: teashop-wf-webui
   workflowVariables:
   - name: apmDef
     value: 'false'
