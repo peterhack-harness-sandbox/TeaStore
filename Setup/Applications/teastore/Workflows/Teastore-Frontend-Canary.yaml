@@ -75,6 +75,28 @@ phases:
         timeoutMillis: 10000
         url: https://api.us1.signalfx.com/v2/metrictimeseries?query=container_hostname:${instance.hostName}
         useProxy: false
+    - type: SHELL_SCRIPT
+      name: Shell Script_2
+      properties:
+        commandPath: null
+        connectionAttributes: null
+        executeOnDelegate: true
+        host: null
+        outputVars: cpu_usage_total,cpu_usage_system,memory_usage_total,network_usage_tx_bytes,network_usage_rx_bytes,memory_usage_limit
+        publishAsVar: true
+        scriptString: |
+          printf ${json.format(SFX.sfxarray)} > array.json
+          cat array.json | jq -r '.results[] | .metric+"="+.id' | sed -n "s/\./_/gp" > sfx.sh
+          source sfx.sh
+          rm -f array.json sfx.sh
+        scriptType: BASH
+        sshKeyRef: null
+        sweepingOutputName: signalfx
+        sweepingOutputScope: WORKFLOW
+        tags: null
+        templateExpressions: null
+        templateVariables: ''
+        timeoutMillis: 60000
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Wrap Up
