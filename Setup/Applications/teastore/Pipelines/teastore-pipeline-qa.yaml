@@ -109,16 +109,4 @@ pipelineStages:
   skipCondition:
     type: DO_NOT_SKIP
   stageName: Teastore Frontend
-  workflowName: teashop-wf-webui
-  workflowVariables:
-  - name: apmDef
-    value: 'false'
-  - entityType: ENVIRONMENT
-    name: Environment
-    value: qa
-  - entityType: SERVICE
-    name: Service
-    value: teastore-webui-qa
-  - entityType: INFRASTRUCTURE_DEFINITION
-    name: InfraDefinition_KUBERNETES
-    value: minikube-lab
+  workflowName: Teastore-Frontend-Canary
