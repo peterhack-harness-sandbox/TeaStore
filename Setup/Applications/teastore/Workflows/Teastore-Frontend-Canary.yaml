@@ -100,7 +100,7 @@ phases:
         templateVersion: null
         timeoutMillis: 60000
     - type: SHELL_SCRIPT
-      name: Shell Script_2
+      name: script validation
       properties:
         commandPath: null
         connectionAttributes: null
@@ -121,7 +121,9 @@ phases:
         sweepingOutputScope: null
         tags: null
         templateExpressions: null
-        templateVariables: ''
+        templateUuid: null
+        templateVariables: null
+        templateVersion: null
         timeoutMillis: 60000
     stepsInParallel: false
   - type: K8S_PHASE_STEP
