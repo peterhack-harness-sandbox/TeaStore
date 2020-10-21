@@ -34,11 +34,6 @@ phases:
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
-    stepSkipStrategies:
-    - assertionExpression: Debug
-      scope: SPECIFIC_STEPS
-      steps:
-      - script validation
     steps:
     - type: SHELL_SCRIPT
       name: Sleep
