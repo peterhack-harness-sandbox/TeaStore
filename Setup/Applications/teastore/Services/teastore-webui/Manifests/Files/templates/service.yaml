@@ -9,7 +9,7 @@ spec:
   type: {{.Values.serviceType}}
   ports:
   - port: {{.Values.serviceTargetPort}}
-    nodePort: {{.Values.servicePort}}
+    # nodePort: {{.Values.servicePort}}
     protocol: TCP
   selector:
     app: teastore
