@@ -36,7 +36,7 @@ pipelineStages:
     name: InfraDefinition_KUBERNETES
     value: minikube-lab
 - type: ENV_STATE
-  name: teashop-wf-1
+  name: teastore-persistence
   parallel: true
   skipCondition:
     type: DO_NOT_SKIP
