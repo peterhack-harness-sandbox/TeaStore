@@ -32,28 +32,6 @@ phases:
   - type: K8S_PHASE_STEP
     name: Verify
     steps:
-    - type: HTTP
-      name: SignalFx
-      properties:
-        assertion: ${httpResponseCode}==200
-        body: ''
-        executeWithPreviousSteps: false
-        header: X-SF-TOKEN:${secrets.getValue("signalfxtoken")}
-        method: GET
-        publishAsVar: true
-        responseProcessingExpressions:
-        - name: sfxcpuid
-          valueType: TEXT
-          value: ${json.select("results[0].id", httpResponseBody)}
-        sweepingOutputName: SFX
-        sweepingOutputScope: WORKFLOW
-        tags: null
-        templateUuid: null
-        templateVariables: null
-        templateVersion: null
-        timeoutMillis: 10000
-        url: https://api.us1.signalfx.com/v2/metrictimeseries?query=sf_metric:cpu.usage.total%20AND%20container_hostname:${instance.hostName}
-        useProxy: false
     - type: SHELL_SCRIPT
       name: validate SFX ID
       properties:
