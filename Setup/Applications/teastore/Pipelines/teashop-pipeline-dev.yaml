@@ -108,7 +108,7 @@ pipelineStages:
   parallel: false
   skipCondition:
     type: DO_NOT_SKIP
-  stageName: Teashop WebUI Workflows
+  stageName: Teastore Frontend
   workflowName: teashop-wf-webui
   workflowVariables:
   - name: apmDef
