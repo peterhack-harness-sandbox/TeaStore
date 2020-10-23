@@ -140,7 +140,7 @@ phases:
         customThresholdRefId: 7ee33e63e9864091a2199fc895a5aab1
         dataCollectionRate: 1
         executeWithPreviousSteps: false
-        hostnameTemplate: ${instanceDetails.k8s.podName}
+        hostnameTemplate: ${instanceDetails.hostName}
         includePreviousPhaseNodes: false
         metricCollectionInfos:
         - method: GET
