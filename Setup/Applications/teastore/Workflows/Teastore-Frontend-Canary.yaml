@@ -153,16 +153,6 @@ phases:
           metricName: memory_usage_total
           metricType: INFRA
           collectionUrl: v1/timeserieswindow?query=sf_metric:"memory.usage.total"%20AND%20container_hostname:${host}&startMs=${start_time}&endMs=${end_time}&resolution:60000
-        - method: GET
-          responseMapping:
-            txnNameFieldValue: cpu_usage_total
-            metricValueJsonPath: data.${signalfx.cpu_usage_total}[*][1]
-            timestampJsonPath: data.${signalfx.cpu_usage_total}[*][0]
-            hostJsonPath: ''
-          responseType: JSON
-          metricName: cpu_usage_total
-          metricType: INFRA
-          collectionUrl: v1/timeserieswindow?query=sf_metric:"cpu.usage.total"%20AND%20container_hostname:${host}&startMs=${start_time}&endMs=${end_time}&resolution:60000
         templateUuid: null
         templateVariables: null
         templateVersion: null
