@@ -53,7 +53,7 @@ phases:
         templateVersion: null
         timeoutMillis: 60000
     - type: HTTP
-      name: HTTP
+      name: SignalFx Assign Metric IDs
       properties:
         assertion: ${httpResponseCode}==200
         body: ''
@@ -68,7 +68,9 @@ phases:
         sweepingOutputName: SFX
         sweepingOutputScope: WORKFLOW
         tags: null
-        templateVariables: ''
+        templateUuid: null
+        templateVariables: null
+        templateVersion: null
         timeoutMillis: 10000
         url: https://api.us1.signalfx.com/v2/metrictimeseries?query=container_hostname:${instance.hostName}
         useProxy: false
