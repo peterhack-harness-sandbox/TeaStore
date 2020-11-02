@@ -33,7 +33,7 @@ phases:
     name: Verify
     steps:
     - type: SHELL_SCRIPT
-      name: Shell Script
+      name: sleep
       properties:
         commandPath: null
         connectionAttributes: null
@@ -48,7 +48,9 @@ phases:
         sweepingOutputScope: null
         tags: null
         templateExpressions: null
-        templateVariables: ''
+        templateUuid: null
+        templateVariables: null
+        templateVersion: null
         timeoutMillis: 60000
     stepsInParallel: false
   - type: K8S_PHASE_STEP
