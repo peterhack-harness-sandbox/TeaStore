@@ -68,7 +68,7 @@ phases:
         tolerance: LOW
     stepsInParallel: false
   - type: K8S_PHASE_STEP
-    name: subject-7
+    name: rollbar
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Wrap Up
