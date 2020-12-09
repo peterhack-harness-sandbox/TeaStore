@@ -32,26 +32,6 @@ phases:
   - type: K8S_PHASE_STEP
     name: Verify
     steps:
-    - type: HTTP
-      name: SignalFx Gather Metric Dimension IDs
-      properties:
-        assertion: ${httpResponseCode}==200
-        body: ''
-        executeWithPreviousSteps: false
-        header: X-SF-TOKEN:${secrets.getValue("sfxtoken")}
-        method: GET
-        publishAsVar: true
-        responseProcessingExpressions:
-        - name: sfxarray
-          valueType: TEXT
-          value: ${httpResponseBody}
-        sweepingOutputName: SFX
-        sweepingOutputScope: WORKFLOW
-        tags: null
-        templateVariables: ''
-        timeoutMillis: 10000
-        url: https://api.us1.signalfx.com/v2/metrictimeseries?query=container_hostname:${instance.hostName}
-        useProxy: false
     - type: SHELL_SCRIPT
       name: SignalFx Assign Metric IDs
       properties:
