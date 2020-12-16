@@ -4,6 +4,6 @@ cloudProviderType: KUBERNETES_CLUSTER
 deploymentType: KUBERNETES
 infrastructure:
 - type: DIRECT_KUBERNETES
-  cloudProviderName: lab-minikube
+  cloudProviderName:
   namespace: ${app.name}-dev
   releaseName: release-${infra.kubernetes.infraId}
