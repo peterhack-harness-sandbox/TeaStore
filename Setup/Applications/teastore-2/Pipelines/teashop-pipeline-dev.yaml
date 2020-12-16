@@ -115,10 +115,10 @@ pipelineStages:
     value: 'false'
   - entityType: ENVIRONMENT
     name: Environment
-    value: dev
+    value: ${environment}
   - entityType: SERVICE
     name: Service
     value: teastore-webui
   - entityType: INFRASTRUCTURE_DEFINITION
     name: InfraDefinition_KUBERNETES
-    value: dev-rolling
+    value: ${infraDef}
