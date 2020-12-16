@@ -11,13 +11,13 @@ pipelineStages:
   workflowVariables:
   - entityType: ENVIRONMENT
     name: Environment
-    value: dev
+    value: ${envrionment}
   - entityType: SERVICE
     name: Service
-    value: teastore-db
+    value: ${service}
   - entityType: INFRASTRUCTURE_DEFINITION
     name: InfraDefinition_KUBERNETES
-    value: dev-rolling
+    value: ${infraDef}
 - type: ENV_STATE
   name: Registry
   parallel: true
