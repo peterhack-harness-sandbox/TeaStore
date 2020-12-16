@@ -1,0 +1,124 @@
+harnessApiVersion: '1.0'
+type: PIPELINE
+pipelineStages:
+- type: ENV_STATE
+  name: Database
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: Teastore Workflows
+  workflowName: teashop-wf-db
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: dev
+  - entityType: SERVICE
+    name: Service
+    value: teastore-db
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_KUBERNETES
+    value: dev-rolling
+- type: ENV_STATE
+  name: Registry
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: Teastore Workflows
+  workflowName: teashop-wf
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: dev
+  - entityType: SERVICE
+    name: Service
+    value: teastore-registry
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_KUBERNETES
+    value: dev-rolling
+- type: ENV_STATE
+  name: Persistence
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: Teastore Workflows
+  workflowName: teashop-wf
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: dev
+  - entityType: SERVICE
+    name: Service
+    value: teastore-persistence
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_KUBERNETES
+    value: dev-rolling
+- type: ENV_STATE
+  name: Auth
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: Teastore Workflows
+  workflowName: teashop-wf
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: dev
+  - entityType: SERVICE
+    name: Service
+    value: teastore-auth
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_KUBERNETES
+    value: dev-rolling
+- type: ENV_STATE
+  name: Image
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: Teastore Workflows
+  workflowName: teashop-wf
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: dev
+  - entityType: SERVICE
+    name: Service
+    value: teastore-image
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_KUBERNETES
+    value: dev-rolling
+- type: ENV_STATE
+  name: Recommender
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: Teastore Workflows
+  workflowName: teashop-wf
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: dev
+  - entityType: SERVICE
+    name: Service
+    value: teastore-recommender
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_KUBERNETES
+    value: dev-rolling
+- type: ENV_STATE
+  name: WebUI
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: Teastore Frontend
+  workflowName: teashop-wf-webui
+  workflowVariables:
+  - name: apmDef
+    value: 'false'
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: dev
+  - entityType: SERVICE
+    name: Service
+    value: teastore-webui
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_KUBERNETES
+    value: dev-rolling
