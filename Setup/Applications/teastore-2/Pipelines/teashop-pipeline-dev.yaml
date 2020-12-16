@@ -31,7 +31,7 @@ pipelineStages:
     value: ${environment}
   - entityType: SERVICE
     name: Service
-    value: ${service}
+    value: teastore-registry
   - entityType: INFRASTRUCTURE_DEFINITION
     name: InfraDefinition_KUBERNETES
     value: ${infraDef}
