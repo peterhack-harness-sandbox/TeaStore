@@ -30,6 +30,9 @@ phases:
       name: Rollout Deployment
     stepsInParallel: false
   - type: K8S_PHASE_STEP
+    name: subject-7
+    stepsInParallel: false
+  - type: K8S_PHASE_STEP
     name: Verify
     steps:
     - type: SHELL_SCRIPT
@@ -150,9 +153,6 @@ phases:
         templateVersion: null
         timeDuration: 10
         tolerance: LOW
-    stepsInParallel: false
-  - type: K8S_PHASE_STEP
-    name: subject-7
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Wrap Up
