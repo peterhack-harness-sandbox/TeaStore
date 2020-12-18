@@ -36,7 +36,13 @@ phases:
       name: Health Check
       properties:
         executeWithPreviousSteps: false
-        timeoutMillis: 0
+        publishAsVar: false
+        responseProcessingExpressions: ''
+        sweepingOutputName: null
+        sweepingOutputScope: null
+        tags: null
+        timeoutMillis: 10000
+        useProxy: false
       templateUri: Harness-3646/Subject7/Health Check:latest
       templateVariables:
       - name: ResponseCode
