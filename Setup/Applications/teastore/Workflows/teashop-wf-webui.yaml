@@ -55,7 +55,7 @@ phases:
         responseProcessingExpressions:
         - name: id
           valueType: TEXT
-          value: ${json.select("id", httpResponseBody)}
+          value: ${json.select("id", ${httpResponseBody})}
         sweepingOutputName: cloud_run_id
         sweepingOutputScope: WORKFLOW
         tags: null
