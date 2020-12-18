@@ -53,7 +53,7 @@ phases:
         executeWithPreviousSteps: false
         publishAsVar: true
         responseProcessingExpressions:
-        - name: cloud_run
+        - name: cloud_run_id
           valueType: TEXT
           value: ${json.select("id", ${httpResponseBody})}
         sweepingOutputName: VARS
