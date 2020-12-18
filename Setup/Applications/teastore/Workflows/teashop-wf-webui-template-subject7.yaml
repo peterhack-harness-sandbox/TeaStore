@@ -72,7 +72,7 @@ phases:
         outputVars: ''
         publishAsVar: false
         scriptString: |
-          echo "id " = ${context.VARS.CR}
+          echo "id " = ${context.SUBJECT.CR}
         scriptType: BASH
         sshKeyRef: null
         sweepingOutputName: null
