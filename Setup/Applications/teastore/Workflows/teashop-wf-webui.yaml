@@ -51,7 +51,13 @@ phases:
       name: Send execution set to the cloud
       properties:
         executeWithPreviousSteps: false
+        publishAsVar: false
+        responseProcessingExpressions: ''
+        sweepingOutputName: null
+        sweepingOutputScope: null
+        tags: null
         timeoutMillis: 30000
+        useProxy: false
       templateUri: Harness-3646/Send execution set to the cloud:latest
     stepsInParallel: false
   - type: K8S_PHASE_STEP
