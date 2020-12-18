@@ -53,10 +53,10 @@ phases:
         executeWithPreviousSteps: false
         publishAsVar: true
         responseProcessingExpressions:
-        - name: CR
+        - name: id
           valueType: TEXT
           value: ${json.object(httpResponseBody).id}
-        sweepingOutputName: SUBJECT
+        sweepingOutputName: cloud_run
         sweepingOutputScope: WORKFLOW
         tags: null
         timeoutMillis: 30000
