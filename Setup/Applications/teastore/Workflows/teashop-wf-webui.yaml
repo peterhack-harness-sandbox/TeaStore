@@ -72,15 +72,17 @@ phases:
         outputVars: ''
         publishAsVar: false
         scriptString: |-
-          echo "context " ${context.cloud_run_id.id}
-          echo "context id" ${context.id}
-          echo "workflow" ${workflow.variables.id}
+          echo "id " ${cloud_run_id.id}
+          echo "workflow var" ${workflow.vars.cloud_run_id.id}
+          echo "workflow id" ${workflow.vars.id}
         scriptType: BASH
         sshKeyRef: null
         sweepingOutputName: null
         sweepingOutputScope: null
         templateExpressions: null
-        templateVariables: ''
+        templateUuid: null
+        templateVariables: null
+        templateVersion: null
         timeoutMillis: 60000
     stepsInParallel: false
   - type: K8S_PHASE_STEP
