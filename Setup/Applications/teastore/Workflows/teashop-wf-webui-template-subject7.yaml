@@ -72,7 +72,8 @@ phases:
         outputVars: ''
         publishAsVar: false
         scriptString: |
-          echo "id " = ${workflow.variables.CR}
+          echo "id " = ${context.SUBJECT.CR}
+          echo "no context" = ${SUBJECT.CR}
         scriptType: BASH
         sshKeyRef: null
         sweepingOutputName: null
