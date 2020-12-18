@@ -71,10 +71,8 @@ phases:
         host: null
         outputVars: ''
         publishAsVar: false
-        scriptString: |-
-          echo "id " ${cloud_run_id.id}
-          echo "workflow var" ${workflow.vars.cloud_run_id.id}
-          echo "workflow id" ${workflow.vars.id}
+        scriptString: |
+          echo "id " = ${context.cloud_run_id.id}
         scriptType: BASH
         sshKeyRef: null
         sweepingOutputName: null
