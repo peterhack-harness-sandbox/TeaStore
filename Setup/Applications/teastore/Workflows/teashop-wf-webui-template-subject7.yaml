@@ -98,24 +98,6 @@ phases:
         timeoutMillis: 30000
         useProxy: false
       templateUri: Harness-3646/Subject7/Get detailed results of cloud run:latest
-    - type: SHELL_SCRIPT
-      name: sleep
-      properties:
-        commandPath: null
-        connectionAttributes: null
-        executeOnDelegate: true
-        host: null
-        outputVars: ''
-        publishAsVar: false
-        scriptString: sleep 10
-        scriptType: BASH
-        sshKeyRef: null
-        sweepingOutputName: null
-        sweepingOutputScope: null
-        tags: null
-        templateExpressions: null
-        templateVariables: ''
-        timeoutMillis: 60000
     - type: HTTP
       name: SignalFx Gather Metric Dimension IDs
       properties:
