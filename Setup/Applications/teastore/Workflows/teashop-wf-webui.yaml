@@ -53,10 +53,10 @@ phases:
         executeWithPreviousSteps: false
         publishAsVar: true
         responseProcessingExpressions:
-        - name: id
+        - name: cloud_run
           valueType: TEXT
           value: ${json.select("id", ${httpResponseBody})}
-        sweepingOutputName: cloud_run_id
+        sweepingOutputName: VARS
         sweepingOutputScope: WORKFLOW
         tags: null
         timeoutMillis: 30000
