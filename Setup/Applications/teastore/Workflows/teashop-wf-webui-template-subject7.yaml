@@ -52,11 +52,8 @@ phases:
       properties:
         executeWithPreviousSteps: false
         publishAsVar: true
-        responseProcessingExpressions:
-        - name: CR
-          valueType: TEXT
-          value: ${json.select("id", httpResponseBody)}
-        sweepingOutputName: VARS
+        responseProcessingExpressions: null
+        sweepingOutputName: SUBJECT
         sweepingOutputScope: WORKFLOW
         tags: null
         timeoutMillis: 30000
