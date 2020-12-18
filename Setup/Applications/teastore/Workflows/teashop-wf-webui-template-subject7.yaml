@@ -52,7 +52,10 @@ phases:
       properties:
         executeWithPreviousSteps: false
         publishAsVar: true
-        responseProcessingExpressions: null
+        responseProcessingExpressions:
+        - name: CR
+          valueType: TEXT
+          value: '123'
         sweepingOutputName: SUBJECT
         sweepingOutputScope: WORKFLOW
         tags: null
