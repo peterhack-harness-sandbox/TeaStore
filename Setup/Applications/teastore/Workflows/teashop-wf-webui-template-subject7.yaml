@@ -55,7 +55,7 @@ phases:
         responseProcessingExpressions:
         - name: CR
           valueType: TEXT
-          value: ${httpResponseBody}
+          value: ${json.select("id",${httpResponseBody})}
         sweepingOutputName: SUBJECT
         sweepingOutputScope: WORKFLOW
         tags: null
