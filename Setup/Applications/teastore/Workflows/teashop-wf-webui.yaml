@@ -72,7 +72,7 @@ phases:
         outputVars: ''
         publishAsVar: false
         scriptString: |
-          echo "id " = ${context.cloud_run_id.id}
+          echo "id " = ${context.VARS.cloud_run_id}
         scriptType: BASH
         sshKeyRef: null
         sweepingOutputName: null
