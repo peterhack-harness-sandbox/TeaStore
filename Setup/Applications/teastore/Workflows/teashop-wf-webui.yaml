@@ -62,9 +62,6 @@ phases:
         timeoutMillis: 30000
         useProxy: false
       templateUri: Harness-3646/Send execution set to the cloud:latest
-      templateVariables:
-      - name: CR
-        value: ${json.select("id", httpResponseBody)}
     - type: SHELL_SCRIPT
       name: Shell Script
       properties:
