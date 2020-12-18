@@ -73,7 +73,6 @@ phases:
         publishAsVar: false
         scriptString: |
           echo "id " = ${context.SUBJECT.CR}
-          echo "no context" = ${SUBJECT.CR}
         scriptType: BASH
         sshKeyRef: null
         sweepingOutputName: null
