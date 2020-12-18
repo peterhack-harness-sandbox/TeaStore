@@ -53,9 +53,9 @@ phases:
         executeWithPreviousSteps: false
         publishAsVar: true
         responseProcessingExpressions:
-        - name: cloud_run_id
+        - name: CR
           valueType: TEXT
-          value: ${json.select("id", ${httpResponseBody})}
+          value: ${json.select("id", httpResponseBody)}
         sweepingOutputName: VARS
         sweepingOutputScope: WORKFLOW
         tags: null
