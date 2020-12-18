@@ -51,10 +51,13 @@ phases:
       name: Send execution set to the cloud
       properties:
         executeWithPreviousSteps: false
-        publishAsVar: false
-        responseProcessingExpressions: ''
-        sweepingOutputName: null
-        sweepingOutputScope: null
+        publishAsVar: true
+        responseProcessingExpressions:
+        - name: id
+          valueType: TEXT
+          value: ${json.select("id", httpResponseBody)}
+        sweepingOutputName: cloud_run_id
+        sweepingOutputScope: WORKFLOW
         tags: null
         timeoutMillis: 30000
         useProxy: false
