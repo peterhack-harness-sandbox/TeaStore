@@ -62,6 +62,26 @@ phases:
         timeoutMillis: 30000
         useProxy: false
       templateUri: Harness-3646/Send execution set to the cloud:latest
+    - type: SHELL_SCRIPT
+      name: Shell Script
+      properties:
+        commandPath: null
+        connectionAttributes: null
+        executeOnDelegate: true
+        host: null
+        outputVars: ''
+        publishAsVar: false
+        scriptString: |-
+          echo "context " ${context.cloud_run_id.id}
+          echo "context id" ${context.id}
+          echo "workflow" ${workflow.variables.id}
+        scriptType: BASH
+        sshKeyRef: null
+        sweepingOutputName: null
+        sweepingOutputScope: null
+        templateExpressions: null
+        templateVariables: ''
+        timeoutMillis: 60000
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
