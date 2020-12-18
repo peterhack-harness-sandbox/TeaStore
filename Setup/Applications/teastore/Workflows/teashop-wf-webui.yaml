@@ -182,6 +182,7 @@ phases:
         timeDuration: 10
         tolerance: LOW
     stepsInParallel: false
+    waitInterval: 20
   - type: K8S_PHASE_STEP
     name: Wrap Up
     stepsInParallel: false
