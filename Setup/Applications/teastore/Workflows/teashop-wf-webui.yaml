@@ -31,6 +31,16 @@ phases:
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: subject-7
+    steps:
+    - type: HTTP
+      name: Health Check
+      properties:
+        executeWithPreviousSteps: false
+        timeoutMillis: 0
+      templateUri: Harness-3646/Subject7/Health Check:latest
+      templateVariables:
+      - name: ResponseCode
+        value: '204'
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
