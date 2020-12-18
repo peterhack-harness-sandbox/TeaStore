@@ -47,6 +47,12 @@ phases:
       templateVariables:
       - name: ResponseCode
         value: '204'
+    - type: HTTP
+      name: Send execution set to the cloud
+      properties:
+        executeWithPreviousSteps: false
+        timeoutMillis: 30000
+      templateUri: Harness-3646/Send execution set to the cloud:latest
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
