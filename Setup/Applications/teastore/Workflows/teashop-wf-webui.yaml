@@ -47,12 +47,6 @@ phases:
       templateVariables:
       - name: ResponseCode
         value: '204'
-    - type: HTTP
-      name: Get detailed results of cloud run
-      properties:
-        executeWithPreviousSteps: false
-        timeoutMillis: 30000
-      templateUri: Harness-3646/Subject7/Get detailed results of cloud run:latest
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
