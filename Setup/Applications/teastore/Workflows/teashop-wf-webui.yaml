@@ -101,6 +101,18 @@ phases:
         timeoutMillis: 10000
         url: https://api.us1.signalfx.com/v2/metrictimeseries?query=container_hostname:${instance.hostName}
         useProxy: false
+    - type: HTTP
+      name: Get detailed results of cloud run
+      properties:
+        executeWithPreviousSteps: false
+        publishAsVar: false
+        responseProcessingExpressions: ''
+        sweepingOutputName: null
+        sweepingOutputScope: null
+        tags: null
+        timeoutMillis: 30000
+        useProxy: false
+      templateUri: Harness-3646/Subject7/Get detailed results of cloud run:latest
     - type: SHELL_SCRIPT
       name: SignalFx Assign Metric IDs
       properties:
@@ -123,18 +135,6 @@ phases:
         templateExpressions: null
         templateVariables: ''
         timeoutMillis: 60000
-    - type: HTTP
-      name: Get detailed results of cloud run
-      properties:
-        executeWithPreviousSteps: false
-        publishAsVar: false
-        responseProcessingExpressions: ''
-        sweepingOutputName: null
-        sweepingOutputScope: null
-        tags: null
-        timeoutMillis: 30000
-        useProxy: false
-      templateUri: Harness-3646/Subject7/Get detailed results of cloud run:latest
     - type: SHELL_SCRIPT
       name: Script output validation
       properties:
