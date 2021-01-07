@@ -88,6 +88,11 @@ phases:
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
+    stepSkipStrategies:
+    - assertionExpression: APM==false
+      scope: SPECIFIC_STEPS
+      steps:
+      - Get detailed results of cloud run
     steps:
     - type: HTTP
       name: Get detailed results of cloud run
