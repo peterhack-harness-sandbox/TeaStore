@@ -220,27 +220,6 @@ phases:
     waitInterval: 20
   - type: K8S_PHASE_STEP
     name: Wrap Up
-    steps:
-    - type: SHELL_SCRIPT
-      name: Shell Script
-      properties:
-        commandPath: null
-        connectionAttributes: null
-        executeOnDelegate: true
-        host: null
-        outputVars: ''
-        publishAsVar: false
-        scriptString: |-
-          echo "Environment Execution Context"
-          env
-          echo "^^ ENV ^^"
-        scriptType: BASH
-        sshKeyRef: null
-        sweepingOutputName: null
-        sweepingOutputScope: null
-        templateExpressions: null
-        templateVariables: ''
-        timeoutMillis: 60000
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Subject7
