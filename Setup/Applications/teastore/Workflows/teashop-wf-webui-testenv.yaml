@@ -101,20 +101,24 @@ phases:
         host: null
         outputVars: ''
         publishAsVar: false
-        scriptString: |
+        scriptString: |-
           echo "memory_usage_limit ${signalfx.memory_usage_limit}"
           echo "cpu_usage_total ${signalfx.cpu_usage_total}"
           echo "cpu_usage_system ${signalfx.cpu_usage_system}"
           echo "memory_usage_total ${signalfx.memory_usage_total}"
           echo "network_usage_tx ${signalfx.network_usage_tx_bytes}"
           echo "network_usage_rx ${signalfx.network_usage_rx_bytes}"
+
+          env
         scriptType: BASH
         sshKeyRef: null
         sweepingOutputName: null
         sweepingOutputScope: null
         tags: null
         templateExpressions: null
-        templateVariables: ''
+        templateUuid: null
+        templateVariables: null
+        templateVersion: null
         timeoutMillis: 60000
     - type: SHELL_SCRIPT
       name: Shell Script_2
