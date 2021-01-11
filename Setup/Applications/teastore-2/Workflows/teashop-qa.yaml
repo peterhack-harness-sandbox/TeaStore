@@ -27,7 +27,6 @@ phases:
 - type: KUBERNETES
   computeProviderName: lab-minikube
   daemonSet: false
-  infraDefinitionName: minikube-lab
   name: Rolling
   phaseSteps:
   - type: K8S_PHASE_STEP
@@ -64,7 +63,6 @@ rollbackPhases:
 - type: KUBERNETES
   computeProviderName: lab-minikube
   daemonSet: false
-  infraDefinitionName: minikube-lab
   name: Rollback Rolling
   phaseNameForRollback: Rolling
   phaseSteps:

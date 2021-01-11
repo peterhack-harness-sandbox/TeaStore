@@ -3,5 +3,4 @@ type: ECS
 containerDefinition:
   commands:
   - ''
-  logConfiguration: {}
   name: DEFAULT_NAME
