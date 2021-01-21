@@ -1,0 +1,10 @@
+harnessApiVersion: '1.0'
+type: TRIGGER
+continueWithDefaultValues: false
+executionName: teashop-pipeline-dev
+executionType: Pipeline
+triggerCondition:
+- type: WEBHOOK
+  eventType:
+  - push
+  repositoryType: GITHUB
