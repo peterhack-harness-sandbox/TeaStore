@@ -36,6 +36,11 @@ phases:
       name: Health Check
       properties:
         executeWithPreviousSteps: false
+        headers:
+        - key: Authorization
+          value: Basic ${secrets.getValue("subject7-token")}
+        - key: content-type
+          value: application/json
         publishAsVar: false
         responseProcessingExpressions: ''
         sweepingOutputName: null
@@ -51,6 +56,11 @@ phases:
       name: Send execution set to the cloud
       properties:
         executeWithPreviousSteps: false
+        headers:
+        - key: Authorization
+          value: Basic ${secrets.getValue("subject7-token")}
+        - key: Content-Type
+          value: application/json
         publishAsVar: true
         responseProcessingExpressions:
         - name: id
@@ -90,6 +100,11 @@ phases:
       name: Get detailed results of cloud run
       properties:
         executeWithPreviousSteps: false
+        headers:
+        - key: Authorization
+          value: Basic ${secrets.getValue("subject7-token")}
+        - key: Content-Type
+          value: application/json
         publishAsVar: false
         responseProcessingExpressions: ''
         sweepingOutputName: null
