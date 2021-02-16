@@ -6,11 +6,11 @@ pipelineStages:
   parallel: false
   skipCondition:
     type: DO_NOT_SKIP
-  stageName: STAGE 1
+  stageName: STAGE 2
   workflowName: canarytest
 - type: ENV_STATE
   name: teashop-complete
-  parallel: false
+  parallel: true
   skipCondition:
     type: DO_NOT_SKIP
   stageName: STAGE 2
@@ -21,7 +21,7 @@ pipelineStages:
   properties:
     userGroups:
     - Account Administrator
-    variables: null
+    workflowVariables: null
     stageName: STAGE 3
     timeoutMillis: 86400000
     approvalStateType: USER_GROUP
