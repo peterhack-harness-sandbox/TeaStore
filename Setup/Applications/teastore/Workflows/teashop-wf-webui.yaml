@@ -33,9 +33,7 @@ phases:
     name: Verify
     stepSkipStrategies:
     - assertionExpression: APM
-      scope: SPECIFIC_STEPS
-      steps:
-      - APM Verification
+      scope: ALL_STEPS
     steps:
     - type: SHELL_SCRIPT
       name: sleep
