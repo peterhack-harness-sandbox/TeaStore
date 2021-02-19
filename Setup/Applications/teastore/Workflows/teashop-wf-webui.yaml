@@ -263,4 +263,4 @@ userVariables:
   fixed: false
   mandatory: true
   name: apmDef
-  value: 'false'
+  value: 'true'
