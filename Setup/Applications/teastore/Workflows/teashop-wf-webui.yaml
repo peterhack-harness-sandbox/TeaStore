@@ -171,10 +171,11 @@ phases:
         publishAsVar: false
         scriptString: "url=${secrets.getValue('plh-slack-wh')}\npayload='\n{ \n  \"\
           type\": \"section\",\n  \"text\": {\n    \"type\": \"mrkdwn\",\n    \"text\"\
-          : \"Deployed to *${infra.name}*\",\n    \"attachments\": [\n     {\n   \
-          \   \"author_name\": \"${deploymentTriggeredBy}\",\n      \"text\": \"Deployment\
-          \ text\",\n      \"color\": \"#00a3e0\"\n      }\n    ]\n  }\n}'\n\ncurl\
-          \ -s -X POST -H \"Content-type: application/json\" --data \"$payload\" $url"
+          : \"Deployed to *${infra.name}*\",\n    \"attachments\": [\n       {\n \
+          \       \"author_name\": \"${deploymentTriggeredBy}\",\n        \"text\"\
+          : \"Deployment text\",\n        \"color\": \"#00a3e0\"\n      }\n    ]\n\
+          \  }\n}'\n\ncurl -s -X POST -H \"Content-type: application/json\" --data\
+          \ \"$payload\" $url"
         scriptType: BASH
         sshKeyRef: null
         sweepingOutputName: null
