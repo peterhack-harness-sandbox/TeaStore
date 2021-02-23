@@ -31,6 +31,9 @@ phases:
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
+    stepSkipStrategies:
+    - assertionExpression: ${env.name} == 'dev'
+      scope: ALL_STEPS
     steps:
     - type: SHELL_SCRIPT
       name: sleep
