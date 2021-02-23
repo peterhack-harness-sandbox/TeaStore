@@ -173,20 +173,12 @@ phases:
           url=${secrets.getValue('plh-slack-wh')}
           payload='
           {
-            "blocks": [
+            "text": "Deployed to *${infra.name}*",
+            "attachments": [
               {
-                "type": "section",
-                "text": {
-                  "type": "mrkdwn",
-                  "text": "Deployed to *${infra.name}*",
-                  "attachments": [
-                    {
-                      "author_name": "${deploymentTriggeredBy}",
-                      "text": "Deployment text",
-                      "color": "#00a3e0"
-                    }
-                  }
-                ]
+                "author_name": "${deploymentTriggeredBy}",
+                "text": "Deployment text",
+                "color": "#00a3e0"
               }
             ]
           }'
