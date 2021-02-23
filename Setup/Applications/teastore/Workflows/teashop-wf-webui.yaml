@@ -173,6 +173,7 @@ phases:
           url=${secrets.getValue('plh-slack-wh')}
           payload='
           {
+            "channel": "@Bogdan Catana"
             "text": "Deployed to *${infra.name}*",
             "attachments": [
               {
