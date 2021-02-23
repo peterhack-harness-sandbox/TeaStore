@@ -31,9 +31,6 @@ phases:
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
-    stepSkipStrategies:
-    - assertionExpression: ${workflow.variables.apmDef}
-      scope: ALL_STEPS
     steps:
     - type: SHELL_SCRIPT
       name: sleep
