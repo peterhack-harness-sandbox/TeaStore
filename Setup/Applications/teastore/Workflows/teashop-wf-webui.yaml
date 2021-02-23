@@ -170,7 +170,7 @@ phases:
         outputVars: ''
         publishAsVar: false
         scriptString: |-
-          url=
+          url=${secrets.getValue('plh-slack-wh')}
           payload='
           {
             "blocks": [
