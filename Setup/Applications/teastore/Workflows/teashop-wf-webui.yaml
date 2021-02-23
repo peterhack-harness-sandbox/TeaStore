@@ -173,7 +173,7 @@ phases:
           url=${secrets.getValue('plh-slack-wh')}
           payload='
           {
-            "channel": "@Bogdan Catana",
+            "channel": "#worldremit",
             "text": "testing slack integration"
           }'
           curl -s -X POST -H "Content-type: application/json" --data "$payload" $url
