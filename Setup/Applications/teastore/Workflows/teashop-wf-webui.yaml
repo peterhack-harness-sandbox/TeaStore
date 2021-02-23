@@ -173,8 +173,6 @@ phases:
           url=${secrets.getValue('plh-slack-wh')}
           payload='
           {
-          payload='
-          {
             "blocks": [
               {
                 "type": "section",
