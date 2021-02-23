@@ -1,6 +1,0 @@
-harnessApiVersion: '1.0'
-type: ECS
-containerDefinition:
-  commands:
-  - ''
-  name: DEFAULT_NAME
