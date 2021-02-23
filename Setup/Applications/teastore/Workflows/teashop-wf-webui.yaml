@@ -173,9 +173,26 @@ phases:
           url=${secrets.getValue('plh-slack-wh')}
           payload='
           {
-            "channel": "#worldremit",
-            "text": "testing slack integration"
+          payload='
+          {
+            "blocks": [
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "Deployed to *${infra.name}*",
+                  "attachments": [
+                    {
+                      "author_name": "${deploymentTriggeredBy}",
+                      "text": "Deployment text",
+                      "color": "#00a3e0"
+                    }
+                  }
+                ]
+              }
+            ]
           }'
+
           curl -s -X POST -H "Content-type: application/json" --data "$payload" $url
         scriptType: BASH
         sshKeyRef: null
