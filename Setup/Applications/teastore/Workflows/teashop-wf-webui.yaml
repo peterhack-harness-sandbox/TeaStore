@@ -170,23 +170,12 @@ phases:
         outputVars: ''
         publishAsVar: false
         scriptString: "url=${secrets.getValue('plh-slack-wh')}\npayload='\n{\n\t\"\
-          blocks\": [\n\t\t{\n\t\t\t\"type\": \"header\",\n\t\t\t\"text\": {\n\t\t\
-          \t\t\"type\": \"plain_text\",\n\t\t\t\t\"text\": \"${workflow.displayName}\"\
-          \n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"type\": \"section\",\n\t\t\t\"fields\"\
-          : [\n\t\t\t\t{\n\t\t\t\t\t\"type\": \"mrkdwn\",\n\t\t\t\t\t\"text\": \"\
-          Service: \\n*${service.name}*\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"type\"\
-          : \"mrkdwn\",\n\t\t\t\t\t\"text\": \"Deployed Artifact: \\n*${artifact.metadata.tag}*\"\
-          \n\t\t\t\t}\n\t\t\t]\n\t\t},\n\t\t{\n\t\t\t\"type\": \"section\",\n\t\t\t\
-          \"fields\": [\n\t\t\t\t{\n\t\t\t\t\t\"type\": \"mrkdwn\",\n\t\t\t\t\t\"\
-          text\": \"Environment: \\n*${env.name}*\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\
-          \t\t\"type\": \"mrkdwn\",\n\t\t\t\t\t\"text\": \"Deployed to: \\n*${infra.name}*\"\
-          \n\t\t\t\t}\n\t\t\t]\n\t\t},\n\t\t{\n\t\t\t\"type\": \"section\",\n\t\t\t\
-          \"fields\": [\n\t\t\t\t{\n\t\t\t\t\t\"type\": \"mrkdwn\",\n\t\t\t\t\t\"\
-          text\": \"Deployed by: \\n*${deploymentTriggeredBy}*\"\n\t\t\t\t}\n\t\t\t\
-          ]\n\t\t},\n\t\t{\n\t\t\t\"type\": \"section\",\n\t\t\t\"fields\": [\n\t\t\
-          \t\t{\n\t\t\t\t\t\"type\": \"mrkdwn\",\n\t\t\t\t\t\"text\": \"<${deploymentUrl}|Deployment\
-          \ URL>\"\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t]\n}'\n\ncurl -s -X POST -H \"Content-type:\
-          \ application/json\" --data \"$payload\" $url"
+          channel\": \"@Peter Hack\",\n\t\"text\": \"${workflow.displayName} \\nService:\
+          \ \\n  *${service.name}* \\nDeployed Artifact: \\n  *${artifact.metadata.tag}*\
+          \ \\nEnvironment: \\n  *${env.name}* \\nDeployed to: \\n  *${infra.name}*\
+          \ \\nDeployed by: \\n  *${deploymentTriggeredBy}* \\n <${deploymentUrl}|Deployment\
+          \ URL>\"\n}'\n\ncurl -s -X POST -H \"Content-type: application/json\" --data\
+          \ \"$payload\" $url"
         scriptType: BASH
         sshKeyRef: null
         sweepingOutputName: null
