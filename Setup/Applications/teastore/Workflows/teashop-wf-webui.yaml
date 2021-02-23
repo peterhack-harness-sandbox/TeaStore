@@ -159,6 +159,45 @@ phases:
     waitInterval: 20
   - type: K8S_PHASE_STEP
     name: Wrap Up
+    steps:
+    - type: SHELL_SCRIPT
+      name: Shell Script
+      properties:
+        commandPath: null
+        connectionAttributes: null
+        executeOnDelegate: true
+        host: null
+        outputVars: ''
+        publishAsVar: false
+        scriptString: |-
+          url=https://hooks.slack.com/services/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
+          payload='
+          {
+            "blocks": [
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "Deployed to *${infra.name}*",
+                  "attachments": [
+                    {
+                      "author_name": "${deploymentTriggeredBy}",
+                      "text": "Deployment text",
+                      "color": "#00a3e0"
+                    }
+                  }
+                ]
+              }
+            ]
+
+          }'
+        scriptType: BASH
+        sshKeyRef: null
+        sweepingOutputName: null
+        sweepingOutputScope: null
+        templateExpressions: null
+        templateVariables: ''
+        timeoutMillis: 60000
     stepsInParallel: false
   provisionNodes: false
   serviceName: teastore-webui
