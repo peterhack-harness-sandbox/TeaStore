@@ -32,7 +32,7 @@ phases:
   - type: K8S_PHASE_STEP
     name: Verify
     stepSkipStrategies:
-    - assertionExpression: apmDef
+    - assertionExpression: ${workflow.variables.apmDef}
       scope: ALL_STEPS
     steps:
     - type: SHELL_SCRIPT
