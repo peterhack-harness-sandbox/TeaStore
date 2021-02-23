@@ -186,8 +186,8 @@ phases:
           \t\"type\": \"mrkdwn\",\n\t\t\t\t\t\"text\": \"Deployed by \\n*${deploymentTriggeredBy}*\"\
           \n\t\t\t\t}\n\t\t\t]\n\t\t},\n\t\t{\n\t\t\t\"type\": \"section\",\n\t\t\t\
           \"fields\": [\n\t\t\t\t{\n\t\t\t\t\t\"type\": \"mrkdwn\",\n\t\t\t\t\t\"\
-          text\": \"Deployment URL: \\n*${deploymentUrl}*\"\n\t\t\t\t}\n\t\t\t]\n\t\
-          \t}\n\t]\n}'\n\ncurl -s -X POST -H \"Content-type: application/json\" --data\
+          text\": \"<${deploymentUrl}|Deployment URL>\"\n\t\t\t\t}\n\t\t\t]\n\t\t\
+          }\n\t]\n}'\n\ncurl -s -X POST -H \"Content-type: application/json\" --data\
           \ \"$payload\" $url"
         scriptType: BASH
         sshKeyRef: null
