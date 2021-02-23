@@ -178,17 +178,15 @@ phases:
           : \"mrkdwn\",\n\t\t\t\t\t\"text\": \"Deployed Artifact \\n*${artifact.metadata.tag}*\"\
           \n\t\t\t\t}\n\t\t\t]\n\t\t},\n\t\t{\n\t\t\t\"type\": \"section\",\n\t\t\t\
           \"fields\": [\n\t\t\t\t{\n\t\t\t\t\t\"type\": \"mrkdwn\",\n\t\t\t\t\t\"\
-          text\": \"Deployed to: \\n*${infra.name}*\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\
-          \t\t\t\"type\": \"mrkdwn\",\n\t\t\t\t\t\"text\": \"Deployed at: \\n*${workflow.startTs}*\"\
-          \n\t\t\t\t}\n\t\t\t]\n\t\t},\n\t\t{\n\t\t\t\"type\": \"section\",\n\t\t\t\
-          \"fields\": [\n\t\t\t\t{\n\t\t\t\t\t\"type\": \"mrkdwn\",\n\t\t\t\t\t\"\
           text\": \"Environment \\n*${env.name}*\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\
-          \t\"type\": \"mrkdwn\",\n\t\t\t\t\t\"text\": \"Deployed by \\n*${deploymentTriggeredBy}*\"\
+          \t\"type\": \"mrkdwn\",\n\t\t\t\t\t\"text\": \"Deployed to: \\n*${infra.name}*\"\
           \n\t\t\t\t}\n\t\t\t]\n\t\t},\n\t\t{\n\t\t\t\"type\": \"section\",\n\t\t\t\
           \"fields\": [\n\t\t\t\t{\n\t\t\t\t\t\"type\": \"mrkdwn\",\n\t\t\t\t\t\"\
-          text\": \"<${deploymentUrl}|Deployment URL>\"\n\t\t\t\t}\n\t\t\t]\n\t\t\
-          }\n\t]\n}'\n\ncurl -s -X POST -H \"Content-type: application/json\" --data\
-          \ \"$payload\" $url"
+          text\": \"Deployed by \\n*${deploymentTriggeredBy}*\"\n\t\t\t\t}\n\t\t\t\
+          ]\n\t\t},\n\t\t{\n\t\t\t\"type\": \"section\",\n\t\t\t\"fields\": [\n\t\t\
+          \t\t{\n\t\t\t\t\t\"type\": \"mrkdwn\",\n\t\t\t\t\t\"text\": \"<${deploymentUrl}|Deployment\
+          \ URL>\"\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t]\n}'\n\ncurl -s -X POST -H \"Content-type:\
+          \ application/json\" --data \"$payload\" $url"
         scriptType: BASH
         sshKeyRef: null
         sweepingOutputName: null
