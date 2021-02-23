@@ -170,20 +170,25 @@ phases:
         outputVars: ''
         publishAsVar: false
         scriptString: "url=${secrets.getValue('plh-slack-wh')}\npayload='\n{\n\t\"\
-          blocks\": [\n\t\t{\n\t\t\t\"type\": \"section\",\n\t\t\t\"fields\": [\n\t\
-          \t\t\t{\n\t\t\t\t\t\"type\": \"mrkdwn\",\n\t\t\t\t\t\"text\": \"Service\
-          \ *${service.name}*\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"type\": \"mrkdwn\"\
-          ,\n\t\t\t\t\t\"text\": \"Deployed Artifact *${artifact.metadata.tag}*\"\n\
-          \t\t\t\t}\n\t\t\t]\n\t\t},\n\t\t{\n\t\t\t\"type\": \"section\",\n\t\t\t\"\
-          fields\": [\n\t\t\t\t{\n\t\t\t\t\t\"type\": \"mrkdwn\",\n\t\t\t\t\t\"text\"\
-          : \"Deployed to *${infra.name}*\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"type\"\
-          : \"mrkdwn\",\n\t\t\t\t\t\"text\": \"Deployed at *${workflow.startTs}*\"\
+          blocks\": [\n\t\t{\n\t\t\t\"type\": \"header\",\n\t\t\t\"text\": {\n\t\t\
+          \t\t\"type\": \"plain_text\",\n\t\t\t\t\"text\": \"${workflow.displayName}\"\
+          \n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"type\": \"section\",\n\t\t\t\"fields\"\
+          : [\n\t\t\t\t{\n\t\t\t\t\t\"type\": \"mrkdwn\",\n\t\t\t\t\t\"text\": \"\
+          Service: \\n*${service.name}*\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"type\"\
+          : \"mrkdwn\",\n\t\t\t\t\t\"text\": \"Deployed Artifact \\n*${artifact.metadata.tag}*\"\
           \n\t\t\t\t}\n\t\t\t]\n\t\t},\n\t\t{\n\t\t\t\"type\": \"section\",\n\t\t\t\
           \"fields\": [\n\t\t\t\t{\n\t\t\t\t\t\"type\": \"mrkdwn\",\n\t\t\t\t\t\"\
-          text\": \"Environment *${env.name}*\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\
-          \"type\": \"mrkdwn\",\n\t\t\t\t\t\"text\": \"Deployed by *${deploymentTriggeredBy}*\"\
-          \n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t]\n}'\n\ncurl -s -X POST -H \"Content-type:\
-          \ application/json\" --data \"$payload\" $url"
+          text\": \"Deployed to: \\n*${infra.name}*\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\
+          \t\t\t\"type\": \"mrkdwn\",\n\t\t\t\t\t\"text\": \"Deployed at: \\n*${workflow.startTs}*\"\
+          \n\t\t\t\t}\n\t\t\t]\n\t\t},\n\t\t{\n\t\t\t\"type\": \"section\",\n\t\t\t\
+          \"fields\": [\n\t\t\t\t{\n\t\t\t\t\t\"type\": \"mrkdwn\",\n\t\t\t\t\t\"\
+          text\": \"Environment \\n*${env.name}*\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\
+          \t\"type\": \"mrkdwn\",\n\t\t\t\t\t\"text\": \"Deployed by \\n*${deploymentTriggeredBy}*\"\
+          \n\t\t\t\t}\n\t\t\t]\n\t\t},\n\t\t{\n\t\t\t\"type\": \"section\",\n\t\t\t\
+          \"fields\": [\n\t\t\t\t{\n\t\t\t\t\t\"type\": \"mrkdwn\",\n\t\t\t\t\t\"\
+          text\": \"Deployment URL: \\n*${deploymentUrl}*\"\n\t\t\t\t}\n\t\t\t]\n\t\
+          \t}\n\t]\n}'\n\ncurl -s -X POST -H \"Content-type: application/json\" --data\
+          \ \"$payload\" $url"
         scriptType: BASH
         sshKeyRef: null
         sweepingOutputName: null
