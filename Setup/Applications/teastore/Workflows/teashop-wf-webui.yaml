@@ -170,7 +170,7 @@ phases:
         outputVars: ''
         publishAsVar: false
         scriptString: |-
-          url=https://hooks.slack.com/services/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
+          url=
           payload='
           {
             "blocks": [
