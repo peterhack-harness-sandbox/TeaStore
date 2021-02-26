@@ -161,7 +161,7 @@ phases:
     name: Wrap Up
     steps:
     - type: SHELL_SCRIPT
-      name: Shell Script
+      name: slack notification
       properties:
         commandPath: null
         connectionAttributes: null
@@ -170,7 +170,7 @@ phases:
         outputVars: ''
         publishAsVar: false
         scriptString: "url=${secrets.getValue('plh-slack-wh')}\npayload='\n{\n\t\"\
-          channel\": \"@Peter Hack\",\n\t\"text\": \"${workflow.displayName} \\nService:\
+          channel\": \"@peter.hack\",\n\t\"text\": \"${workflow.displayName} \\nService:\
           \ \\n  *${service.name}* \\nDeployed Artifact: \\n  *${artifact.metadata.tag}*\
           \ \\nEnvironment: \\n  *${env.name}* \\nDeployed to: \\n  *${infra.name}*\
           \ \\nDeployed by: \\n  *${deploymentTriggeredBy}* \\n <${deploymentUrl}|Deployment\
