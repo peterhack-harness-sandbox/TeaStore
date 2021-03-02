@@ -31,9 +31,6 @@ phases:
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
-    stepSkipStrategies:
-    - assertionExpression: ${env.name} == 'dev'
-      scope: ALL_STEPS
     stepsInParallel: false
     waitInterval: 0
   - type: K8S_PHASE_STEP
