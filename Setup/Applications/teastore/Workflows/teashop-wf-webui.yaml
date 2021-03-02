@@ -160,23 +160,6 @@ phases:
   - type: K8S_PHASE_STEP
     name: Wrap Up
     steps:
-    - type: SHELL_SCRIPT
-      name: Shell Script_2
-      properties:
-        commandPath: null
-        connectionAttributes: null
-        executeOnDelegate: true
-        host: null
-        outputVars: ''
-        publishAsVar: false
-        scriptString: echo "${workflow}"
-        scriptType: BASH
-        sshKeyRef: null
-        sweepingOutputName: null
-        sweepingOutputScope: null
-        templateExpressions: null
-        templateVariables: ''
-        timeoutMillis: 60000
     - type: APPROVAL
       name: Approval
       properties:
