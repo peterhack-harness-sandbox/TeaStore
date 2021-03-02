@@ -159,32 +159,6 @@ phases:
     waitInterval: 0
   - type: K8S_PHASE_STEP
     name: Wrap Up
-    steps:
-    - type: SHELL_SCRIPT
-      name: slack notification
-      properties:
-        commandPath: null
-        connectionAttributes: null
-        executeOnDelegate: true
-        host: null
-        outputVars: ''
-        publishAsVar: false
-        scriptString: "url=${secrets.getValue('plh-slack-wh')}\npayload='\n{\n\t\"\
-          channel\": \"@peter.hack\",\n\t\"text\": \"${workflow.displayName} \\nService:\
-          \ \\n  *${service.name}* \\nDeployed Artifact: \\n  *${artifact.metadata.tag}*\
-          \ \\nEnvironment: \\n  *${env.name}* \\nDeployed to: \\n  *${infra.name}*\
-          \ \\nDeployed by: \\n  *${deploymentTriggeredBy}* \\n <${deploymentUrl}|Deployment\
-          \ URL>\"\n}'\n\ncurl -s -X POST -H \"Content-type: application/json\" --data\
-          \ \"$payload\" $url"
-        scriptType: BASH
-        sshKeyRef: null
-        sweepingOutputName: null
-        sweepingOutputScope: null
-        templateExpressions: null
-        templateUuid: null
-        templateVariables: null
-        templateVersion: null
-        timeoutMillis: 60000
     stepsInParallel: false
   provisionNodes: false
   serviceName: teastore-webui
