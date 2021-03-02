@@ -35,24 +35,6 @@ phases:
     - assertionExpression: ${env.name} == 'dev'
       scope: ALL_STEPS
     steps:
-    - type: SHELL_SCRIPT
-      name: sleep
-      properties:
-        commandPath: null
-        connectionAttributes: null
-        executeOnDelegate: true
-        host: null
-        outputVars: ''
-        publishAsVar: false
-        scriptString: sleep 10
-        scriptType: BASH
-        sshKeyRef: null
-        sweepingOutputName: null
-        sweepingOutputScope: null
-        tags: null
-        templateExpressions: null
-        templateVariables: ''
-        timeoutMillis: 60000
     - type: HTTP
       name: SignalFx Gather Metric Dimension IDs
       properties:
