@@ -70,7 +70,7 @@ phases:
         templateUuid: null
         templateVariables: null
         templateVersion: null
-        timeDuration: 15
+        timeDuration: 10
     stepsInParallel: false
     waitInterval: 0
   - type: K8S_PHASE_STEP
