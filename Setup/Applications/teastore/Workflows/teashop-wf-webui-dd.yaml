@@ -64,9 +64,12 @@ phases:
       properties:
         analysisServerConfigId: 02lTBngTSYeupYV2c5T8xw
         analysisTolerance: LOW
-        comparisonStrategy: COMPARE_WITH_CURRENT
+        comparisonStrategy: COMPARE_WITH_PREVIOUS
         hostnameTemplate: ${host.hostName}
-        metrics: docker.cpu.usage
+        metrics: kubernetes.cpu.usage.total,kubernetes.memory.usage
+        templateUuid: null
+        templateVariables: null
+        templateVersion: null
         timeDuration: 15
     stepsInParallel: false
     waitInterval: 0
