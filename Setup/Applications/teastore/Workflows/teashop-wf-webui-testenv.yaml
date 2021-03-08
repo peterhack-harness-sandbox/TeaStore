@@ -33,32 +33,6 @@ phases:
     name: Verify
     steps:
     - type: SHELL_SCRIPT
-      name: SignalFx Assign Metric IDs
-      properties:
-        commandPath: null
-        connectionAttributes: null
-        executeOnDelegate: true
-        host: null
-        outputVars: cpu_usage_total,cpu_usage_system,memory_usage_total,network_usage_tx_bytes,network_usage_rx_bytes,memory_usage_limit
-        publishAsVar: true
-        scriptString: |-
-          printf ${json.format(SFX.sfxarray)} > array.json
-          cat array.json | jq -r '.results[] | .metric+"="+.id' | sed -n "s/\./_/gp" > sfx.sh
-          source sfx.sh
-          rm -f array.json sfx.sh
-
-          env
-        scriptType: BASH
-        sshKeyRef: null
-        sweepingOutputName: signalfx
-        sweepingOutputScope: WORKFLOW
-        tags: null
-        templateExpressions: null
-        templateUuid: null
-        templateVariables: null
-        templateVersion: null
-        timeoutMillis: 60000
-    - type: SHELL_SCRIPT
       name: Script output validation
       properties:
         commandPath: null
