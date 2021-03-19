@@ -28,6 +28,46 @@ phases:
     steps:
     - type: K8S_DEPLOYMENT_ROLLING
       name: Rollout Deployment
+    - type: SHELL_SCRIPT
+      name: DD Event Started
+      properties:
+        commandPath: null
+        connectionAttributes: null
+        executeOnDelegate: true
+        host: null
+        outputVars: ''
+        publishAsVar: false
+        scriptString: |-
+          title="Harness Deployment Started"
+          message="Starting deployment for '${app.name}' in '${env.name}' for '${artifact.buildNo}'"
+          alert_type="info"
+          tag="environment:${env.name} app:${app.name} artifact:${artifact.buildNo}"
+
+          # Convert key:value pairs into quoted array elements
+          tags=$(echo $tag | sed -e's/[\.a-zA-Z:0-9-]*/\"&\"/g' -e's/\" \"/\", \"/g' )
+          api_key="${secrets.getValue("DD-api-key")}"
+
+          datadog="https://app.datadoghq.com/api/v1/events?api_key=${api_key}"
+
+          payload=$(cat <<-EOJ
+            {
+              "title": "$title",
+              "text": "$message",
+              "tags": [$tags],
+              "alert_type": "$alert_type"
+            }
+          EOJ
+          )
+
+          curl -s -X POST -H "Content-type: application/json" -d "$payload" "$datadog"
+        scriptType: BASH
+        secretOutputVars: ''
+        sshKeyRef: null
+        sweepingOutputName: null
+        sweepingOutputScope: null
+        templateExpressions: null
+        templateVariables: ''
+        timeoutMillis: 60000
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
