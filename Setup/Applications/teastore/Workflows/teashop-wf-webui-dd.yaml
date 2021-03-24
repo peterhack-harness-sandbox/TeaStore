@@ -50,6 +50,37 @@ phases:
         templateVariables: null
         templateVersion: null
         timeDuration: 10
+    - type: SHELL_SCRIPT
+      name: Load
+      properties:
+        commandPath: null
+        connectionAttributes: null
+        delegateSelectors:
+        - home-lab
+        executeOnDelegate: true
+        host: null
+        outputVars: ''
+        publishAsVar: false
+        scriptString: |-
+          ab -l -r -n 100 -c 5 -k -H "Accept-Encoding: gzip, deflate" http://${service.name}/tools.descartes.teastore.webui/category?category=6&page=1
+          sleep 5
+          ab -l -r -n 100 -c 5 -k -H "Accept-Encoding: gzip, deflate" http://${service.name}/tools.descartes.teastore.webui/category?category=3&page=1
+          sleep 5
+          ab -l -r -n 100 -c 5 -k -H "Accept-Encoding: gzip, deflate" http://${service.name}/tools.descartes.teastore.webui/category?category=5&page=1
+          sleep 5
+          ab -l -r -n 100 -c 5 -k -H "Accept-Encoding: gzip, deflate" http://${service.name}/tools.descartes.teastore.webui/category?category=6&page=1
+          sleep 5
+          ab -l -r -n 100 -c 5 -k -H "Accept-Encoding: gzip, deflate" http://${service.name}/tools.descartes.teastore.webui/category?category=2&page=1
+          sleep 5
+          ab -l -r -n 100 -c 5 -k -H "Accept-Encoding: gzip, deflate" http://${service.name}/tools.descartes.teastore.webui/category?category=6&page=1
+          sleep 5
+        scriptType: BASH
+        sshKeyRef: null
+        sweepingOutputName: null
+        sweepingOutputScope: null
+        templateExpressions: null
+        templateVariables: ''
+        timeoutMillis: 60000
     stepsInParallel: false
     waitInterval: 0
   - type: K8S_PHASE_STEP
