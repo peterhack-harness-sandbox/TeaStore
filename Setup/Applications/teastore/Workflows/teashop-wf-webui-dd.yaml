@@ -32,33 +32,6 @@ phases:
   - type: K8S_PHASE_STEP
     name: Verify
     steps:
-    - type: SHELL_SCRIPT
-      name: Shell Script
-      properties:
-        commandPath: null
-        connectionAttributes: null
-        executeOnDelegate: true
-        host: null
-        outputVars: ''
-        publishAsVar: false
-        scriptString: |-
-          echo INSTANCE = "${instance}"
-          echo APP = "${app}"
-          echo  ARTIFACT = "${artifact}"
-          echo HOST = "${host}"
-          echo ENV = "${env}"
-          echo INFRA  = "${infra}"
-          echo SERVICE = "${service}"
-          echo WORKFLOW = "${workflow}"
-        scriptType: BASH
-        sshKeyRef: null
-        sweepingOutputName: null
-        sweepingOutputScope: null
-        templateExpressions: null
-        templateUuid: null
-        templateVariables: null
-        templateVersion: null
-        timeoutMillis: 60000
     - type: DATA_DOG
       name: Datadog Metrics
       properties:
