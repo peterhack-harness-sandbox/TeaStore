@@ -62,24 +62,32 @@ phases:
         outputVars: ''
         publishAsVar: false
         scriptString: |-
-          ab -l -r -n 100 -c 5 -k -H "Accept-Encoding: gzip, deflate" http://${service.name}/tools.descartes.teastore.webui/category?category=6&page=1
-          sleep 5
-          ab -l -r -n 100 -c 5 -k -H "Accept-Encoding: gzip, deflate" http://${service.name}/tools.descartes.teastore.webui/category?category=3&page=1
-          sleep 5
-          ab -l -r -n 100 -c 5 -k -H "Accept-Encoding: gzip, deflate" http://${service.name}/tools.descartes.teastore.webui/category?category=5&page=1
-          sleep 5
-          ab -l -r -n 100 -c 5 -k -H "Accept-Encoding: gzip, deflate" http://${service.name}/tools.descartes.teastore.webui/category?category=6&page=1
-          sleep 5
-          ab -l -r -n 100 -c 5 -k -H "Accept-Encoding: gzip, deflate" http://${service.name}/tools.descartes.teastore.webui/category?category=2&page=1
-          sleep 5
-          ab -l -r -n 100 -c 5 -k -H "Accept-Encoding: gzip, deflate" http://${service.name}/tools.descartes.teastore.webui/category?category=6&page=1
-          sleep 5
+          x=1
+          #!/bin/bash
+          while [ $x -le 60]
+          do
+            ab -l -r -n 100 -c 5 -k -H "Accept-Encoding: gzip, deflate" http://${service.name}/tools.descartes.teastore.webui/category?category=6&page=1
+            sleep 5
+            ab -l -r -n 100 -c 5 -k -H "Accept-Encoding: gzip, deflate" http://${service.name}/tools.descartes.teastore.webui/category?category=3&page=1
+            sleep 5
+            ab -l -r -n 100 -c 5 -k -H "Accept-Encoding: gzip, deflate" http://${service.name}/tools.descartes.teastore.webui/category?category=5&page=1
+            sleep 5
+            ab -l -r -n 100 -c 5 -k -H "Accept-Encoding: gzip, deflate" http://${service.name}/tools.descartes.teastore.webui/category?category=6&page=1
+            sleep 5
+            ab -l -r -n 100 -c 5 -k -H "Accept-Encoding: gzip, deflate" http://${service.name}/tools.descartes.teastore.webui/category?category=2&page=1
+            sleep 5
+            ab -l -r -n 100 -c 5 -k -H "Accept-Encoding: gzip, deflate" http://${service.name}/tools.descartes.teastore.webui/category?category=6&page=1
+            sleep 5
+            x=$(( $x + 1))
+          done
         scriptType: BASH
         sshKeyRef: null
         sweepingOutputName: null
         sweepingOutputScope: null
         templateExpressions: null
-        templateVariables: ''
+        templateUuid: null
+        templateVariables: null
+        templateVersion: null
         timeoutMillis: 60000
     stepsInParallel: true
     waitInterval: 0
