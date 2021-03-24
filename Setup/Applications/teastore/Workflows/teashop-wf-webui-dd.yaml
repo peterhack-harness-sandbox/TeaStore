@@ -62,9 +62,9 @@ phases:
         outputVars: ''
         publishAsVar: false
         scriptString: |-
-          x=1
           #!/bin/bash
-          while [ $x -le 60]
+          x=1;
+          while [ $x -le 60 ];
           do
             ab -l -r -n 100 -c 5 -k -H "Accept-Encoding: gzip, deflate" http://${service.name}/tools.descartes.teastore.webui/category?category=6&page=1
             sleep 5
@@ -78,7 +78,7 @@ phases:
             sleep 5
             ab -l -r -n 100 -c 5 -k -H "Accept-Encoding: gzip, deflate" http://${service.name}/tools.descartes.teastore.webui/category?category=6&page=1
             sleep 5
-            x=$(( $x + 1))
+            $(( x++ ));
           done
         scriptType: BASH
         sshKeyRef: null
