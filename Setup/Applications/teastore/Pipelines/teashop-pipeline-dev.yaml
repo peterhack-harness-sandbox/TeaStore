@@ -109,7 +109,7 @@ pipelineStages:
   properties:
     userGroups:
     - Account Administrator
-    variables: null
+    workflowVariables: null
     stageName: STAGE 2
     timeoutMillis: 86400000
     approvalStateType: USER_GROUP
@@ -123,7 +123,7 @@ pipelineStages:
   skipCondition:
     type: DO_NOT_SKIP
   stageName: Teastore Frontend
-  workflowName: teashop-wf-webui
+  workflowName: teashop-wf-webui-dd
   workflowVariables:
   - name: apmDef
     value: 'false'
