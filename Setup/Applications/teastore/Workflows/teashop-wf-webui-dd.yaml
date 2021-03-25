@@ -82,17 +82,17 @@ phases:
           x=1;
           while [ $x -le 60 ];
           do
-            ab -l -r -n 10 -c 5 -k -H "Accept-Encoding: gzip, deflate" http://${service.name}/tools.descartes.teastore.webui/category?category=6&page=1
+            ab -l -r -n 30 -c 10 -k -H "Accept-Encoding: gzip, deflate" http://${service.name}/tools.descartes.teastore.webui/category?category=6&page=1
             sleep 2s
-            ab -l -r -n 10 -c 5 -k -H "Accept-Encoding: gzip, deflate" http://${service.name}/tools.descartes.teastore.webui/category?category=3&page=1
+            ab -l -r -n 30 -c 10 -k -H "Accept-Encoding: gzip, deflate" http://${service.name}/tools.descartes.teastore.webui/category?category=3&page=1
             sleep 2s
-            ab -l -r -n 10 -c 5 -k -H "Accept-Encoding: gzip, deflate" http://${service.name}/tools.descartes.teastore.webui/category?category=5&page=1
+            ab -l -r -n 30 -c 10 -k -H "Accept-Encoding: gzip, deflate" http://${service.name}/tools.descartes.teastore.webui/category?category=5&page=1
             sleep 2s
-            ab -l -r -n 10 -c 5 -k -H "Accept-Encoding: gzip, deflate" http://${service.name}/tools.descartes.teastore.webui/category?category=6&page=1
+            ab -l -r -n 30 -c 10 -k -H "Accept-Encoding: gzip, deflate" http://${service.name}/tools.descartes.teastore.webui/category?category=6&page=1
             sleep 2s
-            ab -l -r -n 10 -c 5 -k -H "Accept-Encoding: gzip, deflate" http://${service.name}/tools.descartes.teastore.webui/category?category=2&page=1
+            ab -l -r -n 30 -c 10 -k -H "Accept-Encoding: gzip, deflate" http://${service.name}/tools.descartes.teastore.webui/category?category=2&page=1
             sleep 2s
-            ab -l -r -n 10 -c 5 -k -H "Accept-Encoding: gzip, deflate" http://${service.name}/tools.descartes.teastore.webui/category?category=6&page=1
+            ab -l -r -n 30 -c 10 -k -H "Accept-Encoding: gzip, deflate" http://${service.name}/tools.descartes.teastore.webui/category?category=6&page=1
             sleep 2s
             echo "run # $x"
             x=$(( $x + 1 ))
