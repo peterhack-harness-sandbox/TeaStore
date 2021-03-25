@@ -34,8 +34,6 @@ phases:
         templateVariables: null
         templateVersion: null
         timeoutMillis: '1200000'
-    - type: K8S_DEPLOYMENT_ROLLING
-      name: Rollout Deployment
     - type: SHELL_SCRIPT
       name: Datadog Deployment Started Event
       properties:
@@ -50,6 +48,8 @@ phases:
         templateExpressions: null
         timeoutMillis: 600000
       templateUri: Harness-3646/Datadog Deployment Started Event:latest
+    - type: K8S_DEPLOYMENT_ROLLING
+      name: Rollout Deployment
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
