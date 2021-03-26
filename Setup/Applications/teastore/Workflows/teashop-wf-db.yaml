@@ -28,11 +28,6 @@ phases:
     steps:
     - type: K8S_DEPLOYMENT_ROLLING
       name: Rollout Deployment
-    - type: BARRIER
-      name: Database Deployed
-      properties:
-        identifier: db-deployed
-        timeoutMillis: 60000
     - type: SHELL_SCRIPT
       name: Datadog Deployment Started Event
       properties:
@@ -47,6 +42,11 @@ phases:
         templateExpressions: null
         timeoutMillis: 600000
       templateUri: Harness-3646/Datadog Deployment Started Event:latest
+    - type: BARRIER
+      name: Database Deployed
+      properties:
+        identifier: db-deployed
+        timeoutMillis: 60000
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
