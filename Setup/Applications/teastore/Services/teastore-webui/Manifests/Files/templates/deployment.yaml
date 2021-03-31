@@ -61,8 +61,10 @@ spec:
         ports:
         - containerPort: {{.Values.serviceTargetPort}}
         {{- if or .Values.env.config .Values.env.secrets}}
-        envFrom:
-        {{- if .Values.env.config}}
+      env:
+        config:
+          HOST_NAME: "teastore-webui"
+          REGISTRY_HOST: "teastore-registry" 
         - configMapRef:
             name: {{.Values.name}}
         - name: DD_AGENT_HOST
