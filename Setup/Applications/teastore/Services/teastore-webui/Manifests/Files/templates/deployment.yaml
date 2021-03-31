@@ -37,8 +37,8 @@ metadata:
   name: {{.Values.name}}
 labels:
   tags.datadoghq.com/env: "${env.name}"
-  tags.datadoghq.com/service: "${svc.name}"
-  tags.datadoghq.com/version: "${artiface.buildNo}"
+  tags.datadoghq.com/service: "${service.name}"
+  tags.datadoghq.com/version: "${artifact.buildNo}"
 spec:
   replicas: {{int .Values.replicas}}
   selector:
