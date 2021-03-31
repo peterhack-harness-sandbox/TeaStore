@@ -35,6 +35,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{.Values.name}}
+labels:
+  tags.datadoghq.com/env: "${env.name}"
+  tags.datadoghq.com/service: "${svc.name}"
+  tags.datadoghq.com/version: "${artiface.buildNo}"
 spec:
   replicas: {{int .Values.replicas}}
   selector:
