@@ -36,8 +36,8 @@ kind: Deployment
 metadata:
   name: {{.Values.name}}
   labels:
-    tags.datadoghq.com/env: "${env.name}"
-    tags.datadoghq.com/service: "${service.name}"
+    tags.datadoghq.com/env: "${Environment}"
+    tags.datadoghq.com/service: "${Service}"
     tags.datadoghq.com/version: "${artifact.buildNo}"
 spec:
   replicas: {{int .Values.replicas}}
