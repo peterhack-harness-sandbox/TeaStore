@@ -23,8 +23,10 @@ serviceTargetPort: 8080
 # Both are added to the container environment in podSpec as envFrom source.
 env:
   config:
-    HOST_NAME: "teastore-webui"
-    REGISTRY_HOST: "teastore-registry"  
+    - name: HOST_NAME
+      value: "teastore-webui"
+    - name: REGISTRY_HOST
+      value: "teastore-registry"  
     - name: DD_AGENT_HOST
       valueFrom:
         fieldRef:
