@@ -87,7 +87,6 @@ spec:
           value: "true"
         - name: DD_LOGS_INJECTION
           value: "true"
-        {{- end}}
         {{- if .Values.env.secrets}}
         - secretRef:
             name: {{.Values.name}}
