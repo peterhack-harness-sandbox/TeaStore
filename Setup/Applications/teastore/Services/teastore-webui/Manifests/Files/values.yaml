@@ -23,27 +23,5 @@ serviceTargetPort: 8080
 # Both are added to the container environment in podSpec as envFrom source.
 env:
   config:
-    - name: HOST_NAME
-      value: "teastore-webui"
-    - name: REGISTRY_HOST
-      value: "teastore-registry"  
-    - name: DD_AGENT_HOST
-      valueFrom:
-        fieldRef:
-          fieldPath: status.hostIP
-    - name: DD_ENV
-      valueFrom:
-        fieldRef:
-          fieldPath: metadata.labels['tags.datadoghq.com/env']
-    - name: DD_SERVICE
-      valueFrom:
-        fieldRef:
-          fieldPath: metadata.labels['tags.datadoghq.com/service']
-    - name: DD_VERSION
-      valueFrom:
-        fieldRef:
-          fieldPath: metadata.labels['tags.datadoghq.com/version']
-    - name: DD_PROFILING_ENABLED
-      value: "true"
-    - name: DD_LOGS_INJECTION
-      value: "true"
+    HOST_NAME: "teastore-webui"
+    REGISTRY_HOST: "teastore-registry"  
