@@ -42,20 +42,6 @@ phases:
         templateExpressions: null
         timeoutMillis: 600000
       templateUri: Harness-3646/Datadog Deployment Started Event:latest
-    - type: SHELL_SCRIPT
-      name: Reveal Vars
-      properties:
-        commandPath: null
-        connectionAttributes: null
-        executeOnDelegate: true
-        host: null
-        publishAsVar: false
-        sshKeyRef: null
-        sweepingOutputName: null
-        sweepingOutputScope: null
-        templateExpressions: null
-        timeoutMillis: 600000
-      templateUri: Harness-3646/Reveal Vars:5
     - type: K8S_DEPLOYMENT_ROLLING
       name: Rollout Deployment
     stepsInParallel: false
