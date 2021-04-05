@@ -175,7 +175,15 @@ rollbackPhases:
     - type: SHELL_SCRIPT
       name: Datadog Deployment Failed
       properties:
+        commandPath: null
+        connectionAttributes: null
         executeOnDelegate: true
+        host: null
+        publishAsVar: false
+        sshKeyRef: null
+        sweepingOutputName: null
+        sweepingOutputScope: null
+        templateExpressions: null
         timeoutMillis: 600000
       templateUri: Harness-3646/Datadog Deployment Failed:latest
     stepsInParallel: false
