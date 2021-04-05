@@ -116,6 +116,12 @@ rollbackPhases:
     steps:
     - type: K8S_DEPLOYMENT_ROLLING_ROLLBACK
       name: Rollback Deployment
+    - type: SHELL_SCRIPT
+      name: Datadog Deployment Failed
+      properties:
+        executeOnDelegate: true
+        timeoutMillis: 600000
+      templateUri: Harness-3646/Datadog Deployment Failed:latest
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Wrap Up
