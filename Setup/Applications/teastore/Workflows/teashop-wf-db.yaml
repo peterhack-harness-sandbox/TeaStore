@@ -47,6 +47,12 @@ phases:
       properties:
         identifier: db-deployed
         timeoutMillis: 60000
+    - type: SHELL_SCRIPT
+      name: Reveal Vars
+      properties:
+        executeOnDelegate: true
+        timeoutMillis: 600000
+      templateUri: Harness-3646/Reveal Vars:latest
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
