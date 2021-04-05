@@ -124,6 +124,18 @@ phases:
     stepsInParallel: true
     waitInterval: 0
   - type: K8S_PHASE_STEP
+    failureStrategies:
+    - failureTypes:
+      - CONNECTIVITY
+      repairActionCode: RETRY
+      repairActionCodeAfterRetry: IGNORE
+      retryCount: 3
+      retryIntervals:
+      - 5
+      - 10
+      - 15
+      specificSteps:
+      - Datadog Deployment Completed Event
     name: Wrap Up
     steps:
     - type: SHELL_SCRIPT
