@@ -48,8 +48,6 @@ phases:
         templateExpressions: null
         timeoutMillis: 600000
       templateUri: Harness-3646/Datadog Deployment Started Event:latest
-      templateVariables:
-      - name: alert_type"
     - type: SHELL_SCRIPT
       name: Reveal Vars
       properties:
