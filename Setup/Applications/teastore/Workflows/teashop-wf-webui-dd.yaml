@@ -55,7 +55,7 @@ phases:
         sweepingOutputScope: null
         templateExpressions: null
         timeoutMillis: 600000
-      templateUri: Harness-3646/Reveal Vars:latest
+      templateUri: Harness-3646/Reveal Vars:5
     - type: K8S_DEPLOYMENT_ROLLING
       name: Rollout Deployment
     stepsInParallel: false
