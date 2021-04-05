@@ -40,8 +40,6 @@ phases:
         templateExpressions: null
         timeoutMillis: 600000
       templateUri: Harness-3646/Datadog Deployment Started Event:latest
-      templateVariables:
-      - name: alert_type"
     - type: K8S_DEPLOYMENT_ROLLING
       name: Rollout Deployment
     - type: SHELL_SCRIPT
