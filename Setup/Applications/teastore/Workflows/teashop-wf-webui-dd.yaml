@@ -125,23 +125,6 @@ phases:
     waitInterval: 0
   - type: K8S_PHASE_STEP
     name: Wrap Up
-    steps:
-    - type: SHELL_SCRIPT
-      name: Datadog Deployment Completed Event
-      properties:
-        commandPath: null
-        connectionAttributes: null
-        delegateSelectors:
-        - home-lab
-        executeOnDelegate: true
-        host: null
-        publishAsVar: false
-        sshKeyRef: null
-        sweepingOutputName: null
-        sweepingOutputScope: null
-        templateExpressions: null
-        timeoutMillis: 600000
-      templateUri: Harness-3646/Datadog Deployment Completed Event:latest
     stepsInParallel: false
   provisionNodes: false
   serviceName: teastore-webui
