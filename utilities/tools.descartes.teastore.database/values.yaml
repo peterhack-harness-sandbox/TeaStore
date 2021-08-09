@@ -1,4 +1,3 @@
-# name: <+pipeline.stages.dev.name>
 name: teastore-db
 replicas: 1
 
