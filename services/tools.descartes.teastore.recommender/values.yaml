@@ -5,7 +5,7 @@ image: <+artifact.image>
 # dockercfg: <+artifact.imagePullSecret>
 
 createNamespace: true
-namespace: <+pipeline.stages.dev.spec.infrastructure.infrastructureDefinition.spec.namespace>
+namespace: <+pipeline.stages.Teastore_Deploy.spec.infrastructure.infrastructureDefinition.spec.namespace>
 
 # Service Type allow you to specify what kind of service you want.
 # Possible values for ServiceType are:
