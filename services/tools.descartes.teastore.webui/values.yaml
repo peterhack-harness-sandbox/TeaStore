@@ -1,4 +1,4 @@
-#name: <+pipeline.stages.dev.name>
+# name: <+pipeline.stages.dev.name>
 name: teastore-webui
 replicas: 1
 
