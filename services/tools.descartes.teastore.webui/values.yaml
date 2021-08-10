@@ -16,6 +16,7 @@ serviceType: NodePort
 # targetPort is where application is listening on inside the container.
 servicePort: 30080
 serviceTargetPort: 8080
+protocol: TCP
 
 # Specify all environment variables to be added to the container.
 # The following two maps, config and secrets, are put into a ConfigMap

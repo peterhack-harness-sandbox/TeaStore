@@ -4,12 +4,12 @@ metadata:
   name: {{.Values.name}}
   labels:
     app: teastore
-    run: {{.Values.name}}
+    run: teastore-db
 spec:
   type: {{.Values.serviceType}}
   ports:
-  - port: {{.Values.serviceTargetPort}}
+  - port: 3306
     protocol: TCP
   selector:
     app: teastore
-    run: {{.Values.name}}
+    run: teastore-db

@@ -63,7 +63,8 @@ spec:
         {{- if or .Values.env.config .Values.env.secrets}}
       env:
         config:
-          HOST_NAME: "teastore-registry"
+        - name: HOST_NAME
+	  value: "teastore-recommender"
         - configMapRef:
             name: {{.Values.name}}
         - name: DD_AGENT_HOST
